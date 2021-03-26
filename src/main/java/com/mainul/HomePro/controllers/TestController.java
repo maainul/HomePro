@@ -13,18 +13,18 @@ public class TestController {
 
     @GetMapping("/index2")
     public String index2(){
-        return "index2";
+        return "addExpenceType";
     }
 
 
     @GetMapping("/index3")
     public String index3(){
-        return "index3";
+        return "thisMonthPaidDetails";
     }
 
     @GetMapping("/form")
     public String form(){
-        return "form";
+        return "thisYearRentDetails";
     }
 
 }
