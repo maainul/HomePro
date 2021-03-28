@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -54,8 +54,8 @@
 
                             <li><a><i class="fa fa-home"></i> Home Info<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu">
-                                    <li><a href="addOrUpdatePropertyInfo.html">Add Property Info</a></li>
-                                    <li><a href="homeDetails.html">Details</a></li>
+                                    <li><a th:href="@{/addHome}">Add Property Info</a></li>
+                                    <li><a th:href="@{/homes}">Details</a></li>
                                     <li><a href="addOrUpdatePropertyInfo.html">Update Info</a></li>
                                     <li><a href="addRoomInfo.html">Add Room Details</a></li>
                                     <li><a href="roomList.html">All Room list</a></li>

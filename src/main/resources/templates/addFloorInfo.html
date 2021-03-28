@@ -71,15 +71,17 @@
                   <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-                  <form class="" action="" method="post" novalidate>
+                  <form action="#" th:action="@{/addFloor}" th:object="${floor}"
+                        method="POST">
 
 
-                    <div class="field item form-group">
+
+                  <div class="field item form-group">
                       <label class="col-form-label col-md-3 col-sm-3  label-align">Floor Name<span
                           class="required">*</span></label>
                       <div class="col-md-6 col-sm-6">
-                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="houseRent"
-                          placeholder="" required="required" />
+                        <input class="form-control" data-validate-length-range="6" data-validate-words="2" name="floorName"
+                          placeholder="" required="required" th:field="*{floorName}"/>
                       </div>
                     </div>
 

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-  <head>
+<head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
     <meta charset="utf-8">
@@ -21,14 +21,14 @@
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
-  </head>
+</head>
 
-  <body class="nav-md">
-    <div class="container body">
-      <div class="main_container">
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
         <div class="col-md-3 left_col">
 
-          <div th:replace="fragments/navigation:: navigation"></div>
+            <div th:replace="fragments/navigation:: navigation"></div>
 
         </div>
 
@@ -41,116 +41,158 @@
 
         <!-- page content -->
         <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                <h3>Home Details</h3>
-              </div>
+            <div class="">
 
-            </div>
-            
-            <div class="clearfix"></div>
-
-            <div class="row">
-              <div class="col-md-12">
-                <div class="x_panel">
-                  <div class="x_content">
-
-                    <div class="col-md-9 col-sm-9  ">
-
-                      <ul class="stats-overview">
-                        <li>
-                          <span class="name"> Estimated Cost </span>
-                          <span class="value text-success"> 2300 </span>
-                        </li>
-                        <li>
-                          <span class="name"> Total amount</span>
-                          <span class="value text-success"> 2000 </span>
-                        </li>
-                        <li class="hidden-phone">
-                          <span class="name"> Total Profit</span>
-                          <span class="value text-success"> 20 </span>
-                        </li>
-                      </ul>
-                      <br />
-
-                      <div id="mainb" style="height:350px;"></div>
-
-                      <div>
-
-
-                      </div>
-
+                <div class="page-title">
+                    <div class="title_left">
 
                     </div>
 
-                    <!-- start project-detail sidebar -->
-                    <div class="col-md-3 col-sm-3  ">
-
-                      <section class="panel">
-
-                        <div class="x_title">
-                          <h2>Home Description</h2>
-                          <div class="clearfix"></div>
-                        </div>
-                        <div class="panel-body">
-                          <h3 class="green"><i class="fa fa-paint-brush"></i> Home Pro</h3>
-
-                          <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
-                          <br />
-
-                          <div class="project_detail">
-
-                            <p class="title">Client Company</p>
-                            <p>Deveint Inc</p>
-                            <p class="title">Project Leader</p>
-                            <p>Tony Chicken</p>
-                          </div>
-
-                          <br/>
-
-                          <div class="text-center mtop20">
-                            <a href="#" class="btn btn-sm btn-primary">Update Info</a>
-                          </div>
-                        </div>
-
-                      </section>
-
-                    </div>
-                    <!-- end project-detail sidebar -->
-
-                  </div>
                 </div>
-              </div>
+
+                <div class="clearfix"></div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="x_panel">
+                            <div class="x_content">
+
+                                <div class="col-md-9 col-sm-9  ">
+
+                                    <ul class="stats-overview">
+                                        <li>
+                                            <span class="name"> Estimated Cost </span>
+                                            <span class="value text-success"> 2300 </span>
+                                        </li>
+                                        <li>
+                                            <span class="name"> Total amount</span>
+                                            <span class="value text-success"> 2000 </span>
+                                        </li>
+                                        <li class="hidden-phone">
+                                            <span class="name"> Total Profit</span>
+                                            <span class="value text-success"> 20 </span>
+                                        </li>
+                                    </ul>
+                                    <br/>
+
+                                    <div id="mainb" style="height:350px;"></div>
+
+                                    <div>
+
+
+                                    </div>
+
+
+                                </div>
+                                <tr th:each="home : ${home}">
+                                    <!-- start project-detail sidebar -->
+                                    <div class="col-md-3 col-sm-3  ">
+
+                                        <section class="panel">
+
+                                            <div class="x_title">
+                                                <h2>Property Location</h2>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <h3 class="green"><i class="fa fa-paint-brush"></i> <span
+                                                        th:text="${home.propertyLocation}"></span></h3>
+
+                                                <td>
+
+                                                    <p class="title">Price</p>
+                                                    <p><span th:text="${home.propertyPrice}"></span></p>
+
+
+                                                </td>
+
+                                                <td>
+
+                                                    <p class="title">Buy Date</p>
+                                                    <p><span th:text="${home.finalPaymentDate}"></span></p>
+
+
+                                                </td>
+                                                <br/>
+
+                                                <div class="project_detail">
+
+                                                    <td>
+
+                                                        <p class="title">Buyer Name</p>
+                                                        <p><span th:text="${home.buyerName}"></span></p>
+
+
+                                                    </td>
+
+                                                    <td>
+
+                                                        <p class="title">Seller Name</p>
+                                                        <p><span th:text="${home.sellerName}"></span></p>
+
+
+                                                    </td>
+
+
+                                                    <td>
+
+                                                        <p class="title">Seller Name</p>
+                                                        <p><span th:text="${home.sellerName}"></span></p>
+
+
+                                                    </td>
+
+                                                    <p class="title">Property Size</p>
+                                                    <p><span th:text="${home.propertySize}"></span></p></div>
+
+                                                <br/>
+
+                                                <td>
+                                                    <div class="text-center mtop20">
+                                                        <a th:href="@{/showFormForUpdate/{id}(id=${home.id})}"
+                                                           class="btn btn-sm btn-primary">Update Info</a>
+                                                </td>
+
+                                            </div>
+                                    </div>
+
+                                    </section>
+                                </tr>
+                            </div>
+                            <!-- end project-detail sidebar -->
+
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-        <!-- /page content -->
-
-        <!-- footer content -->
-        <footer>
-          <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-          </div>
-          <div class="clearfix"></div>
-        </footer>
-        <!-- /footer content -->
-      </div>
     </div>
+    <!-- /page content -->
 
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
-    <!-- Bootstrap -->
-   <script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- FastClick -->
-    <script src="../vendors/fastclick/lib/fastclick.js"></script>
-    <!-- NProgress -->
-    <script src="../vendors/nprogress/nprogress.js"></script>
-    <!-- ECharts -->
-    <script src="../vendors/echarts/dist/echarts.min.js"></script>
+    <!-- footer content -->
+    <footer>
+        <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+</div>
+</div>
 
-    <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- ECharts -->
+<script src="../vendors/echarts/dist/echarts.min.js"></script>
 
-  </body>
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+</body>
 </html>
