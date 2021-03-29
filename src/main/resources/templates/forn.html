@@ -15,22 +15,6 @@
 <div class="container my-2">
     <h1>Floor List</h1>
 
-    <table border="1" class = "table table-striped table-responsive-md">
-        <thead>
-        <tr>
-            <th>Expense Id</th>
-            <th>Expense Name</th>
-
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="expense : ${listExpense}">
-            <td th:text="${expense.id}"></td>
-            <td th:text="${expense.expenseTypeName}"></td>
-
-        </tr>
-        </tbody>
-    </table>
 </div>
 </body>
 </html>
