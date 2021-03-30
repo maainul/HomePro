@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Home Pro! |</title>
+
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css"
+          rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
+</head>
+
+<body class="nav-md">
+<div class="container body">
+    <div class="main_container">
+        <div class="col-md-3 left_col">
+
+            <div th:replace="fragments/navigation:: navigation"></div>
+
+        </div>
+
+        <!-- top navigation -->
+
+        <div th:replace="fragments/topNavigation :: topNavigation"></div>
+
+        <!-- /top navigation -->
+
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+            <div class="">
+                <div class="page-title"></div>
+            </div>
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>Renter Information</h2>
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li><a class="collapse-link"><i
+                                        class="fa fa-chevron-up"></i></a></li>
+                                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                </li>
+                            </ul>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="x_content">
+                            <form class="" th:action="@{/addRenter}" method="post" th:object="${renter}" novalidate>
+                                <span class="section">Renter Information</span>
+
+                                <input type="hidden" th:field="*{id}">
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="firstName">First Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="firstName" required="required"
+                                               class="form-control" th:field="*{firstName}">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="lastName">Last Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="lastName" name="lastName"
+                                               required="required" class="form-control" th:field="*{lastName}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="middleName"
+                                           class="col-form-label col-md-3 col-sm-3 label-align">Middle
+                                        Name / Initial</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="middleName" class="form-control col" type="text"
+                                               name="middleName" th:field="*{middleName}">
+                                    </div>
+                                </div>
+                                <!--
+                                                                    <div class="form-group row">
+                                                                        <label class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+                                                                        <div class="col-md-6 col-sm-6 ">
+                                                                            <div id="gender" class="btn-group" data-toggle="buttons">
+                                                                                <label class="btn btn-secondary"
+                                                                                    data-toggle-class="btn-primary"
+                                                                                    data-toggle-passive-class="btn-secondary"> <input
+                                                                                    type="radio" name="gender" value="male" class="join-btn">
+                                                                                    &nbsp; Male &nbsp;
+                                                                                </label> <label class="btn btn-primary"
+                                                                                    data-toggle-class="btn-primary"
+                                                                                    data-toggle-passive-class="btn-secondary"> <input
+                                                                                    type="radio" name="gender" value="female" class="join-btn">
+                                                                                    Female
+                                                                                </label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>-->
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="NID">NID Number <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="NID" name="NID"
+                                               required="required" class="form-control" th:field="*{NID}">
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Date of Birth<span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="input-group date">
+
+                                            <input type="text" class="form-control" id="datepicker-0"
+                                                   th:field="*{dateOfBirth}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="email">Email <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="email" name="email"
+                                               required="required" class="form-control " th:field="*{email}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="phoneNumber1">Phone Number-1 <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="phoneNumber1" name="phoneNumber1"
+                                               required="required" class="form-control " th:field="*{phoneNumber1}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="phoneNumber2">Phone Number-2<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="phoneNumber2" name="phoneNumber2"
+                                               required="required" class="form-control " th:field="*{phoneNumber2}">
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="facebook">FaceBook <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="facebook" name="facebook"
+                                               required="required" class="form-control" th:field="*{facebook}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="occupation">Occupation <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="occupation" name="occupation"
+                                               required="required" class="form-control " th:field="*{occupation}">
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Permanent
+                                        Address<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <textarea required="required" name='permanentAddress'
+                                                  th:field="*{permanentAddress}"></textarea>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="officeName">Office Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="officeName" required="required"
+                                               class="form-control  " th:field="*{officeName}">
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Office Join Date<span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="input-group date">
+
+                                            <input type="text" class="form-control" id="datepicker"
+                                                   th:field="*{officeJoinDate}"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group row">
+                                    <label for="post"
+                                           class="col-form-label col-md-3 col-sm-3 label-align">Post</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="post" class="form-control col" type="text"
+                                               name="post" th:field="*{post}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align">
+                                        Salary <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input id="salary" class="date-picker form-control"
+                                               required="required" type="text" th:field="*{salary}">
+                                    </div>
+                                </div>
+
+                                <!--  <span class="section">Property Information</span> -->
+                                <!--
+                                                                <div class="field item form-group">
+                                                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Room
+                                                                        Number<span class="required">*</span>
+                                                                    </label>
+                                                                    <div class="col-md-6 col-sm-6">
+                                                                        <select class="form-control">
+                                                                            <option>- select option -</option>
+                                                                            <option>Option one</option>
+                                                                            <option>Option two</option>
+                                                                            <option>Option three</option>
+                                                                            <option>Option four</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                -->
+
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="discount">Discount<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="discount" required="required"
+                                               class="form-control" th:field="*{discount}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                           for="advanceMonth">Advance Month<span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <input type="text" id="advanceMonth" required="required"
+                                               class="form-control" th:field="*{advanceMonth}">
+                                    </div>
+                                </div>
+
+                                <div class="field item form-group">
+                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Rental Date<span
+                                            class="required">*</span></label>
+                                    <div class="col-md-6 col-sm-6">
+                                        <div class="input-group date">
+
+                                            <input type="text" class="form-control" id="datepicker-2"
+                                                   th:field="*{rentalDate}"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 offset-md-3">
+                                        <button type='submit' class="btn btn-primary">Submit</button>
+                                        <button type='reset' class="btn btn-success">Reset</button>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page content -->
+
+    <!-- footer content -->
+    <footer>
+        <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a
+                href="https://colorlib.com">Colorlib</a>
+        </div>
+        <div class="clearfix"></div>
+    </footer>
+    <!-- /footer content -->
+</div>
+</div>
+
+
+<script
+        src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="../vendors/validator/multifield.js"></script>
+<script src="../vendors/validator/validator.js"></script>
+
+<script>
+		// initialize a validator instance from the "FormValidator" constructor.
+		// A "<form>" element is optionally passed as an argument, but is not a must
+		var validator = new FormValidator({
+			"events" : [ 'blur', 'input', 'change' ]
+		}, document.forms[0]);
+		// on form "submit" event
+		document.forms[0].onsubmit = function(e) {
+			var submit = true, validatorResult = validator.checkAll(this);
+			console.log(validatorResult);
+			return !!validatorResult.valid;
+		};
+		// on form "reset" event
+		document.forms[0].onreset = function(e) {
+			validator.reset();
+		};
+		// stuff related ONLY for this demo page:
+		$('.toggleValidationTooltips').change(function() {
+			validator.settings.alerts = !this.checked;
+			if (this.checked)
+				$('form .alert').remove();
+		}).prop('checked', false);
+
+
+
+</script>
+
+<!-- jQuery -->
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="../vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<!-- FastClick -->
+<script src="../vendors/fastclick/lib/fastclick.js"></script>
+<!-- NProgress -->
+<script src="../vendors/nprogress/nprogress.js"></script>
+<!-- validator -->
+<!-- <script src="../vendors/validator/validator.js"></script> -->
+
+<!-- Custom Theme Scripts -->
+<script src="../build/js/custom.min.js"></script>
+
+</body>
+
+</html>

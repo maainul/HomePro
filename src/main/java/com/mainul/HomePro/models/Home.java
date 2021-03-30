@@ -18,7 +18,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "homeInfo")
 public class Home {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,7 +26,6 @@ public class Home {
 	private String buyerName;
 	private String propertySize;
 	private String propertyLocation;
-
 	private Date firstPaymentDate;
 	private String firstPaymentAmount;
 	private Date finalPaymentDate;

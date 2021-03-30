@@ -5,8 +5,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 
-public interface FloorService{
+public interface FloorService {
+
     void saveFloor(Floor floor);
+
     List<Floor> getAllFloors();
+
     Floor getFloorById(long id);
 }

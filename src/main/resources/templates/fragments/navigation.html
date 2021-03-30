@@ -73,20 +73,20 @@
                     </li>
                     <li><a><i class="fa fa-desktop"></i> Renter Information <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="addOrUpdateRenterInfo.html">Add Renter Info</a></li>
-                            <li><a href="renterListTable.html">Renter List Table</a></li>
-                            <li><a href="renterList.html">RenterList</a></li>
-                            <li><a href="addOrUpdateRenterInfo.html">Update Renter Info</a></li>
-                            <li><a href="icons.html">Delete Renter info</a></li>
+                            <li><a th:href="@{/addRenter}">Add Renter Info</a></li>
+                            <li><a th:href="@{/renterList}">Renter List Table</a></li>
+                            <li><a href="renterList.html">RenterList With Photo</a></li>
+                            <li><a th:href="@{/addGender}">Add Gender</a></li>
+                            <li><a th:href="@{/genderList}">Gender List</a></li>
                         </ul>
                     </li>
 
                     <li><a><i class="fa fa-table"></i> Expanse Info <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="addExpense">Add Expense Details</a></li>
                             <li><a href="allExpenceListDateWise.html">All Expense details</a></li>
+                            <li><a href="addExpense">Add Expense Details</a></li>
                             <li><a th:href="@{/addExpense}" >Add Expense Type</a></li>
-                            <li><a th:href="@{/expenseTypes}">Expense List</a></li>
+                            <li><a th:href="@{/expenseTypes}">Expense Type List</a></li>
 
                         </ul>
                     </li>
