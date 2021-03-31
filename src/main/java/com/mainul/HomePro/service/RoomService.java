@@ -11,4 +11,6 @@ public interface RoomService {
 
     Room findRoomById(Integer id);
 
+   // int countRoom()
+
 }

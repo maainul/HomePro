@@ -35,6 +35,7 @@ public class RoomController {
     public String roomListTable(Model model){
         model.addAttribute("floorList",floorService.getAllFloors());
         model.addAttribute("roomList",roomService.roomList());
+
         return "roomList";
     }
 
