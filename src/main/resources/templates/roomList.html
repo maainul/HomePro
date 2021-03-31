@@ -101,10 +101,10 @@
                                                 <tbody>
                                                 <tr th:each="room : ${roomList}">
                                                     <td th:text="${room.roomName}"></td>
-                                                   <!-- <td>
+                                               <!--     <td>
                                                         <p th:each="floor : ${floorList}" th:if = "(${floor.id} == ${room.id})" th:text="${floor.floorName}"></p>
                                                     </td>-->
-                                                    <td th:text="${room.floorid}"></td>
+                                                    <td th:text="${room.floor.floorName}"></td>
                                                     <td th:text="${room.roomRent}"></td>
                                                     <td th:text="${room.gasBill}"></td>
                                                     <td th:text="${room.internetBill}"></td>

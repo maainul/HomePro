@@ -25,7 +25,6 @@ public class Room {
     @ManyToOne()
     @JoinColumn(name = "floorid",insertable = false, updatable = false)
     private Floor floor;
-    private Integer floorid;
 
 
 
