@@ -5,12 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "floor")
+
 public class Floor {
 
     @Id
@@ -18,5 +20,7 @@ public class Floor {
     private long id;
     private String floorName;
 
+    @OneToMany(mappedBy = "floor")
+    private List<Room> rooms;
 
 }

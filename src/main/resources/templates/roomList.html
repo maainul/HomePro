@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Home Pro </title>
+    <title>Rooms</title>
 
     <!-- Bootstrap -->
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -29,7 +29,6 @@
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
 </head>
-
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
@@ -51,7 +50,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Renter List</h3>
+                        <h3>Room List</h3>
                     </div>
 
                     <div class="title_right">
@@ -72,7 +71,7 @@
                     <div class="col-md-12 col-sm-12 ">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Renter Information</h2>
+                                <h2>Room Information</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -91,40 +90,30 @@
                                                    style="width:100%">
                                                 <thead>
                                                 <tr>
-                                                    <td>Photo</td>
-                                                    <th>Name</th>
-                                                    <th>Phone Number</th>
-                                                    <th>Salary</th>
-                                                    <th>Room Number</th>
+                                                    <th>Room Name/ Number</th>
+                                                    <th>Floor</th>
                                                     <th>Room Rent</th>
-                                                    <th>Rental Date</th>
+                                                    <th>Gas Bill</th>
+                                                    <th>Internet Bill</th>
                                                     <th>Action</th>
-
                                                 </tr>
                                                 </thead>
-
-
                                                 <tbody>
-                                                <tr th:each="renter : ${renterList}">
+                                                <tr th:each="room : ${roomList}">
+                                                    <td th:text="${room.roomName}"></td>
+                                                   <!-- <td>
+                                                        <p th:each="floor : ${floorList}" th:if = "(${floor.id} == ${room.id})" th:text="${floor.floorName}"></p>
+                                                    </td>-->
+                                                    <td th:text="${room.floorid}"></td>
+                                                    <td th:text="${room.roomRent}"></td>
+                                                    <td th:text="${room.gasBill}"></td>
+                                                    <td th:text="${room.internetBill}"></td>
+
                                                     <td>
-                                            <!--            <a id="photoButton" th:href="@{'/img/photos/avatar.jpg'}">
-                                                            <img th:src="@{'/img/photos/avatar.jpg'}" width="40"
-                                                                 height="40">
-                                                        </a>
--->
-                                                        <a id="photoButton" th:href="@{'/img/photos/' + ${renter.id} +'.jpg'}">
-                                                            <img th:src="@{'/img/photos/' + ${renter.id} +'.jpg'}" width="40" height="40">
-                                                        </a>
+                                                    <a th:href="@{/updateRoomInfo/{id}(id=${room.id})}" class="btn btn-primary">Update</a>
                                                     </td>
-                                                    <td th:text="${renter.firstName}">Mr.X</td>
-                                                    <td th:text="${renter.phoneNumber1}">202</td>
-                                                    <td th:text="${renter.salary}">30000</td>
-                                                    <td>NULL</td>
-                                                    <td>NULL</td>
-                                                    <td th:text="${renter.rentalDate}">3000</td>
-                                                    <td><a th:href="@{/updateRenter/{id}(id=${renter.id})}"
-                                                           class="btn btn-info">Update</a></td>
                                                 </tr>
+
                                                 </tbody>
 
                                             </table>

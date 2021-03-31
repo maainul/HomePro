@@ -36,11 +36,12 @@ public class Renter {
     private String discount;
     private String advanceMonth;
     private Date rentalDate;
+    private String photo;
 
     public Renter() {
     }
 
-    public Renter(long id, String firstName, String lastName, String middleName, String NID, Date dateOfBirth, String email, String phoneNumber1, String phoneNumber2, String facebook, String occupation, String permanentAddress, String officeName, Date officeJoinDate, String post, String salary, String discount, String advanceMonth, Date rentalDate) {
+    public Renter(long id, String firstName, String lastName, String middleName, String NID, Date dateOfBirth, String email, String phoneNumber1, String phoneNumber2, String facebook, String occupation, String permanentAddress, String officeName, Date officeJoinDate, String post, String salary, String discount, String advanceMonth, Date rentalDate, String photo) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -60,6 +61,7 @@ public class Renter {
         this.discount = discount;
         this.advanceMonth = advanceMonth;
         this.rentalDate = rentalDate;
+        this.photo = photo;
     }
 
     public long getId() {
@@ -214,6 +216,14 @@ public class Renter {
         this.rentalDate = rentalDate;
     }
 
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+
     @Override
     public String toString() {
         return "Renter{" +
@@ -236,6 +246,7 @@ public class Renter {
                 ", discount='" + discount + '\'' +
                 ", advanceMonth='" + advanceMonth + '\'' +
                 ", rentalDate=" + rentalDate +
+                ", photo='" + photo + '\'' +
                 '}';
     }
 }

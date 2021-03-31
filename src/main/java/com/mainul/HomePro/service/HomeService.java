@@ -8,9 +8,7 @@ import java.util.List;
 
 
 public interface HomeService {
-	
 
-	
 	void saveHome(Home home);
 
     List<Home> getAllHome();
