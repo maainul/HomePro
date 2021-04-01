@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -8,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Home Pro </title>
+    <title>Expenses</title>
 
     <!-- Bootstrap -->
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -30,7 +29,6 @@
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
 </head>
-
 <body class="nav-md">
 <div class="container body">
     <div class="main_container">
@@ -45,6 +43,7 @@
         <div th:replace="fragments/topNavigation :: topNavigation"></div>
 
         <!-- /top navigation -->
+
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -91,17 +90,25 @@
                                                    style="width:100%">
                                                 <thead>
                                                 <tr>
-                                                    <th>Expense Type Id</th>
-                                                    <th>Expense Type Name</th>
-
+                                                    <th>Expense Type</th>
+                                                    <th>Expense Date</th>
+                                                    <th>Expense Amount</th>
+                                                    <th>Expense Description</th>
+                                                    <th>Action</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr th:each="expenseType : ${listExpense}">
-                                                    <td th:text="${expenseType.id}"></td>
-                                                    <td th:text="${expenseType.expenseTypeName}"></td>
-                                                   <td><a th:href="@{/expenseTypeUpdateForm/{id}(id=${expenseType.id})}" class="btn btn-primary">Update</a></td>
+                                                <tr th:each="expense : ${expenseList}">
+                                                    <td th:text="${expense.expenseType.expenseTypeName}"></td>
+                                                    <td th:text="${expense.expenseDate}"></td>
+                                                    <td th:text="${expense.expenseAmount}"></td>
+                                                    <td th:text="${expense.description}"></td>
+
+                                                    <td>
+                                                        <a th:href="@{/updateExpenseInfo/{id}(id=${expense.id})}" class="btn btn-primary">Update</a>
+                                                    </td>
                                                 </tr>
+
                                                 </tbody>
 
                                             </table>

@@ -1,7 +1,7 @@
 package com.mainul.HomePro.serviceImplementation;
 
 import com.mainul.HomePro.models.ExpenseType;
-import com.mainul.HomePro.repository.ExpenseRepository;
+import com.mainul.HomePro.repository.ExpenseTypeRepository;
 import com.mainul.HomePro.service.ExpenseTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ExpenseRepositoryImpl implements ExpenseTypeService {
+public class ExpenseTypeServiceImpl implements ExpenseTypeService {
     @Autowired
-    private ExpenseRepository expenseRepository;
+    private ExpenseTypeRepository expenseRepository;
 
 
     @Override

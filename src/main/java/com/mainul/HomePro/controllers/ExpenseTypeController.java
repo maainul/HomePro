@@ -16,14 +16,14 @@ public class ExpenseTypeController {
     @Autowired
     private ExpenseTypeService expenseTypeService;
 
-    @GetMapping("/addExpense")
+    @GetMapping("/addExpenseType")
     public String showExpenseTypeForm(Model model) {
         ExpenseType expenseType = new ExpenseType();
         model.addAttribute("expenseType", expenseType);
         return "addExpenseType";
     }
 
-    @PostMapping("/addExpense")
+    @PostMapping("/addExpenseType")
     public String saveExpanses(@ModelAttribute("expenseType") ExpenseType expenseType) {
         expenseTypeService.saveExpenseType(expenseType);
         return "redirect:/expenseTypes";
@@ -37,8 +37,8 @@ public class ExpenseTypeController {
         return "/expenseTypeList";
     }
 
-    @GetMapping("/expenseUpdateForm/{id}")
-    public String expenseUpdate(@PathVariable(value = "id") long id, Model model) {
+    @GetMapping("/expenseTypeUpdateForm/{id}")
+    public String expenseUpdate(@PathVariable(value = "id") Long id, Model model) {
         ExpenseType expenseType = expenseTypeService.getExpenseTypeById(id);
         model.addAttribute("expenseType", expenseType);
         return "updateExpense";
