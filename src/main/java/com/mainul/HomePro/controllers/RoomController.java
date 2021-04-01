@@ -20,7 +20,7 @@ public class RoomController {
 
     @GetMapping("/addRoom")
     public String getRoomForm(Model model){
-        model.addAttribute("floorList",floorService.getAllFloors());
+        model.addAttribute("floors",floorService.getAllFloors());
         model.addAttribute("room",new Room());
         return "addRoomInfo";
     }

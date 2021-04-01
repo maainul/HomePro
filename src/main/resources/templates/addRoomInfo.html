@@ -102,36 +102,15 @@
                                         </div>
                                     </div>
 
-
-                                    <!--  <span class="section">Property Information</span> -->
-
-                                    <!--                    <div class="field item form-group">
-                                                          <label class="col-form-label col-md-3 col-sm-3  label-align">Floor :<span
-                                                              class="required">*</span></label>
-                                                          <div class="col-md-6 col-sm-6">
-                                                             <select class="form-control">
-                                                                <option>- select option -</option>
-                                                                <option th:each="floor : ${floorList}"
-                                                                        th:value="${floor.id}"
-                                                                        th:text="${floor.floorName}">
-
-                                                                </option>
-                                                              </select>
-                                                          </div>
-                                                        </div>-->
                                     <div class="field item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Floor :<span
-                                                class="required">*</span></label>
-                                        <div class="col-md-6 col-sm-6">
-                                            <select class="form-control" id="ddlCountryAdd" name="floorid">
-
-                                                <option>-SELECT-</option>
-                                                <option th:each="floor : ${floorList}"
-                                                        th:value="${floor.id}"
-                                                        th:text="${floor.floorName}">
-                                                </option>
-                                            </select>
-                                        </div>
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align" for="floorDetails" >Floor: </label>
+                                        <select class="form-control" id="ddlCountryAdd" name="floorid">
+                                            <option>-SELECT-</option>
+                                            <option th:each="f : ${floors}"
+                                                    th:value="${f.id}"
+                                                    th:text="${f.floorName}">
+                                            </option>
+                                        </select>
                                     </div>
 
 
