@@ -107,14 +107,15 @@
                                                 <tbody>
                                                 <tr th:each="renter : ${renterList}">
                                                     <td>
-                                            <!--            <a id="photoButton" th:href="@{'/img/photos/avatar.jpg'}">
-                                                            <img th:src="@{'/img/photos/avatar.jpg'}" width="40"
-                                                                 height="40">
-                                                        </a>
--->
+                                                        <!--              <a id="photoButton" th:href="@{'/img/photos/1.jpg'}">
+                                                                          <img th:src="@{'/img/photos/1.jpg'}" width="40"
+                                                                               height="40">
+                                                                      </a>
+              -->
                                                         <a id="photoButton" th:href="@{'/img/photos/' + ${renter.id} +'.jpg'}">
-                                                            <img th:src="@{'/img/photos/' + ${renter.id} +'.jpg'}" width="40" height="40">
+                                                            <img th:src="@{'/img/photos/' + ${renter.id} +'.jpg'}" width="50" height="50">
                                                         </a>
+
                                                     </td>
                                                     <td th:text="${renter.firstName}">Mr.X</td>
                                                     <td th:text="${renter.phoneNumber1}">202</td>
@@ -136,6 +137,25 @@
                     </div>
                     <!-- /page content -->
 
+                </div>
+            </div>
+
+            <div class="modal fade" tabindex="-1" role="dialog" id="photoModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img id="renterPhoto" src="" width="95%" height="95%">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -165,6 +185,7 @@
             <script src="../vendors/jszip/dist/jszip.min.js"></script>
             <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
             <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+            <script src="../customJs/renter.js"></script>
 
             <!-- Custom Theme Scripts -->
             <script src="../build/js/custom.min.js"></script>

@@ -31,8 +31,7 @@ public class RenterController {
 
     @GetMapping("/addRenter")
     public String showAddInfoForm(Model model) {
-        Renter renter = new Renter();
-        model.addAttribute("renter", renter);
+        model.addAttribute("renter", new Renter());
         return "addRenterInfo";
     }
 

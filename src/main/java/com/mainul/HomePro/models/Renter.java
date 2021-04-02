@@ -38,12 +38,12 @@ public class Renter {
     private String advanceMonth;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date rentalDate;
-    private String photo;
+    private String renterImage;
 
     public Renter() {
     }
 
-    public Renter(long id, String firstName, String lastName, String middleName, String gender, String maritalStatus, String NID, Date dateOfBirth, String email, String phoneNumber1, String phoneNumber2, String facebook, String occupation, String permanentAddress, String officeName, Date officeJoinDate, String post, String salary, String discount, String advanceMonth, Date rentalDate, String photo) {
+    public Renter(long id, String firstName, String lastName, String middleName, String gender, String maritalStatus, String NID, Date dateOfBirth, String email, String phoneNumber1, String phoneNumber2, String facebook, String occupation, String permanentAddress, String officeName, Date officeJoinDate, String post, String salary, String discount, String advanceMonth, Date rentalDate, String renterImage) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -65,7 +65,7 @@ public class Renter {
         this.discount = discount;
         this.advanceMonth = advanceMonth;
         this.rentalDate = rentalDate;
-        this.photo = photo;
+        this.renterImage = renterImage;
     }
 
     public long getId() {
@@ -236,12 +236,12 @@ public class Renter {
         this.rentalDate = rentalDate;
     }
 
-    public String getPhoto() {
-        return photo;
+    public String getRenterImage() {
+        return renterImage;
     }
 
-    public void setPhoto(String photo) {
-        this.photo = photo;
+    public void setRenterImage(String renterImage) {
+        this.renterImage = renterImage;
     }
 
     @Override
@@ -268,7 +268,7 @@ public class Renter {
                 ", discount='" + discount + '\'' +
                 ", advanceMonth='" + advanceMonth + '\'' +
                 ", rentalDate=" + rentalDate +
-                ", photo='" + photo + '\'' +
+                ", renterImage='" + renterImage + '\'' +
                 '}';
     }
 }

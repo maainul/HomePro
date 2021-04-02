@@ -8,11 +8,8 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
-@Entity
-@NoArgsConstructor
-@AllArgsConstructor
 
+@Entity
 public class Floor {
 
     @Id
@@ -23,5 +20,45 @@ public class Floor {
     @OneToMany(mappedBy = "floor")
     private List<Room> rooms;
 
+    public Floor(){
 
+    }
+    public Floor(long id, String floorName, List<Room> rooms) {
+        this.id = id;
+        this.floorName = floorName;
+        this.rooms = rooms;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getFloorName() {
+        return floorName;
+    }
+
+    public void setFloorName(String floorName) {
+        this.floorName = floorName;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    @Override
+    public String toString() {
+        return "Floor{" +
+                "id=" + id +
+                ", floorName='" + floorName + '\'' +
+                ", rooms=" + rooms +
+                '}';
+    }
 }
