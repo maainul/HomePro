@@ -18,4 +18,5 @@ public class Gender {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long id;
     public String genderName;
+
 }

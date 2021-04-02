@@ -9,7 +9,7 @@ public interface RoomService {
 
     List<Room> roomList();
 
-    Room findRoomById(Integer id);
+    Room findRoomById(Long id);
 
    // int countRoom()
 

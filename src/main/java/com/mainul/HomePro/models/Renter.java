@@ -1,9 +1,7 @@
 
 package com.mainul.HomePro.models;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,6 +19,7 @@ public class Renter {
     private String middleName;
     //private Gender gender;
     private String NID;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
     private String email;
     private String phoneNumber1;
@@ -29,12 +28,14 @@ public class Renter {
     private String occupation;
     private String permanentAddress;
     private String officeName;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date officeJoinDate;
     private String post;
     private String salary;
     //private Room room;
     private String discount;
     private String advanceMonth;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date rentalDate;
     private String photo;
 

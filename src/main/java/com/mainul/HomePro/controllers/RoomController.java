@@ -21,7 +21,7 @@ public class RoomController {
     @GetMapping("/addRoom")
     public String getRoomForm(Model model){
         model.addAttribute("floors",floorService.getAllFloors());
-        model.addAttribute("room",new Room());
+        model.addAttribute("room", new Room());
         return "addRoomInfo";
     }
 
@@ -40,7 +40,7 @@ public class RoomController {
     }
 
     @GetMapping("/updateRoomInfo/{id}")
-    public String updateRoomForm(@PathVariable(value = "id") Integer id, Model model){
+    public String updateRoomForm(@PathVariable(value = "id") Long id, Model model){
         model.addAttribute("floorList", floorService.getAllFloors());
         model.addAttribute("room",roomService.findRoomById(id));
         return "updateRoomInfo";

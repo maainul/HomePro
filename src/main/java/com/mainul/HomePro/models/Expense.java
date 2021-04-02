@@ -3,8 +3,10 @@ package com.mainul.HomePro.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Expense {
@@ -14,7 +16,8 @@ public class Expense {
     private Long id;
     private int expenseAmount;
     private String description;
-    private String expenseDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date expenseDate;
 
     @ManyToOne()
     @JoinColumn(name = "expenseTypeid", insertable = false, updatable = false)
@@ -25,7 +28,7 @@ public class Expense {
 
     }
 
-    public Expense(Long id, int expenseAmount, String description, String expenseDate, ExpenseType expenseType, Long expenseTypeid) {
+    public Expense(Long id, int expenseAmount, String description, Date expenseDate, ExpenseType expenseType, Long expenseTypeid) {
         this.id = id;
         this.expenseAmount = expenseAmount;
         this.description = description;
@@ -58,11 +61,11 @@ public class Expense {
         this.description = description;
     }
 
-    public String getExpenseDate() {
+    public Date getExpenseDate() {
         return expenseDate;
     }
 
-    public void setExpenseDate(String expenseDate) {
+    public void setExpenseDate(Date expenseDate) {
         this.expenseDate = expenseDate;
     }
 
@@ -88,7 +91,7 @@ public class Expense {
                 "id=" + id +
                 ", expenseAmount=" + expenseAmount +
                 ", description='" + description + '\'' +
-                ", expenseDate='" + expenseDate + '\'' +
+                ", expenseDate=" + expenseDate +
                 ", expenseType=" + expenseType +
                 ", expenseTypeid=" + expenseTypeid +
                 '}';

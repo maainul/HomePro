@@ -17,11 +17,13 @@ import java.util.List;
 @Controller
 public class RenterController {
 
+/*
     @InitBinder
     public void initBinder(WebDataBinder binder) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/YYYY");
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
+*/
 
 
     @Autowired

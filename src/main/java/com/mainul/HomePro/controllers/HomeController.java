@@ -20,12 +20,12 @@ import java.util.Date;
 @Controller
 public class HomeController {
 
-	@InitBinder
+/*	@InitBinder
 	public void initBinder(WebDataBinder binder) {
 		// Date -- dd/MM/yyyy
 		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
-	}
+	}*/
 
 	@Autowired
 	private HomeService homeService;

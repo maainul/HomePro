@@ -24,8 +24,12 @@ public class Home {
     private String buyerName;
     private String propertySize;
     private String propertyLocation;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date firstPaymentDate;
     private int firstPaymentAmount;
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date finalPaymentDate;
     private int propertyPrice;
     private String homeName;

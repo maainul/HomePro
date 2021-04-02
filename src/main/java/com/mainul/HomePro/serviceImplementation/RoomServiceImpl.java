@@ -26,7 +26,7 @@ public class RoomServiceImpl implements RoomService {
     }
 
     @Override
-    public Room findRoomById(Integer id) {
+    public Room findRoomById(Long id) {
         Optional<Room> optional = roomRepository.findById(id);
         Room room = null;
         if (optional.isPresent()){
