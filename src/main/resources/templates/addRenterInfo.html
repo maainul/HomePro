@@ -88,6 +88,30 @@
                                                name="middleName" th:field="*{middleName}">
                                     </div>
                                 </div>
+
+                                <div class="form-group row">
+                                    <label for="gender" class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <select class="form-control" id="ddlGenderAdd" name="gender">
+                                            <option>-SELECT-</option>
+                                            <option th:value="MALE">MALE</option>
+                                            <option th:value="FEMALE">FEMALE</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+
+                                    <label for="maritalStatus" class="col-form-label col-md-3 col-sm-3 label-align">Marital Status: </label>
+                                    <div class="col-md-6 col-sm-6 ">
+                                        <select class="form-control" id="ddlMaritalAdd" name="maritalStatus">
+                                            <option>-SELECT-</option>
+                                            <option value="Married">Married</option>
+                                            <option value="Unmarried">Unmarried</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
                                 <div class="form-group row">
                                     <label class="col-form-label col-md-3 col-sm-3 label-align"
                                            for="NID">NID Number <span class="required">*</span>

@@ -17,7 +17,8 @@ public class Renter {
     private String firstName;
     private String lastName;
     private String middleName;
-    //private Gender gender;
+    private String gender;
+    private String maritalStatus;
     private String NID;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfBirth;
@@ -42,11 +43,13 @@ public class Renter {
     public Renter() {
     }
 
-    public Renter(long id, String firstName, String lastName, String middleName, String NID, Date dateOfBirth, String email, String phoneNumber1, String phoneNumber2, String facebook, String occupation, String permanentAddress, String officeName, Date officeJoinDate, String post, String salary, String discount, String advanceMonth, Date rentalDate, String photo) {
+    public Renter(long id, String firstName, String lastName, String middleName, String gender, String maritalStatus, String NID, Date dateOfBirth, String email, String phoneNumber1, String phoneNumber2, String facebook, String occupation, String permanentAddress, String officeName, Date officeJoinDate, String post, String salary, String discount, String advanceMonth, Date rentalDate, String photo) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.middleName = middleName;
+        this.gender = gender;
+        this.maritalStatus = maritalStatus;
         this.NID = NID;
         this.dateOfBirth = dateOfBirth;
         this.email = email;
@@ -95,6 +98,22 @@ public class Renter {
 
     public void setMiddleName(String middleName) {
         this.middleName = middleName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getMaritalStatus() {
+        return maritalStatus;
+    }
+
+    public void setMaritalStatus(String maritalStatus) {
+        this.maritalStatus = maritalStatus;
     }
 
     public String getNID() {
@@ -232,6 +251,8 @@ public class Renter {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", middleName='" + middleName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", maritalStatus='" + maritalStatus + '\'' +
                 ", NID='" + NID + '\'' +
                 ", dateOfBirth=" + dateOfBirth +
                 ", email='" + email + '\'' +
@@ -251,4 +272,5 @@ public class Renter {
                 '}';
     }
 }
+
 
