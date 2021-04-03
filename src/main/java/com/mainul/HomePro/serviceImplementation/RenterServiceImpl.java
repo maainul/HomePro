@@ -1,5 +1,6 @@
 package com.mainul.HomePro.serviceImplementation;
 
+import com.mainul.HomePro.models.Rent;
 import com.mainul.HomePro.models.Renter;
 import com.mainul.HomePro.repository.RenterRepository;
 import com.mainul.HomePro.service.RenterService;
@@ -16,8 +17,9 @@ public class RenterServiceImpl implements RenterService {
     private RenterRepository renterRepository;
 
     @Override
-    public void saveRenter(Renter renter) {
+    public Renter saveRenter(Renter renter) {
         renterRepository.save(renter);
+        return renter;
     }
 
     @Override
@@ -37,5 +39,38 @@ public class RenterServiceImpl implements RenterService {
         }
         return renter;
     }
+
+    @Override
+    public int countMale() {
+        List<Renter> renters = renterRepository.findAll();
+        int count = 0;
+        for (Renter renter : renters) {
+            if (renter.getGender().equalsIgnoreCase("MALE")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public int countFemale() {
+        List<Renter> renters = renterRepository.findAll();
+        int count = 0;
+        for (Renter renter : renters) {
+            if (renter.getGender().equalsIgnoreCase("FEMALE")) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    @Override
+    public int totalRenter() {
+        List<Renter> renters = renterRepository.findAll();
+        int totalRenters = (int) renters.stream().count();
+        return totalRenters;
+    }
+
+
 }
 

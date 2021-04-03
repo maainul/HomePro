@@ -100,7 +100,8 @@
                                                 <tbody>
                                                 <tr th:each="expense : ${expenseList}">
                                                     <td th:text="${expense.expenseType.expenseTypeName}"></td>
-                                                    <td th:text="${expense.expenseDate}"></td>
+                                                <!--    <td th:text="${expense.expenseDate} 'dd-MMM-yyyy' "></td>-->
+                                                    <td th:text="${#dates.format(expense.expenseDate, 'dd-MMM-yyyy')}"></td>
                                                     <td th:text="${expense.expenseAmount}"></td>
                                                     <td th:text="${expense.description}"></td>
 

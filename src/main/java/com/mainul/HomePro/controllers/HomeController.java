@@ -1,5 +1,6 @@
 package com.mainul.HomePro.controllers;
 
+import com.mainul.HomePro.service.ExpenseService;
 import lombok.Data;
 import org.hibernate.exception.DataException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,37 +28,40 @@ public class HomeController {
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
 	}*/
 
-	@Autowired
-	private HomeService homeService;
+    @Autowired
+    private HomeService homeService;
 
-	@GetMapping("/homes")
-	public String showHomeInfo(Model model) {
-		model.addAttribute("home", homeService.getAllHome());
-		return "homeDetails";
-	}
 
-	@GetMapping("/addHome")
-	public String showHomeAddForm(Model model) {
-		Home home = new Home();
-		model.addAttribute("home", home);
-		return "addOrUpdateHomeInfo";
-	}
 
-	@PostMapping("/save")
-	public String saveHomeDetails(@ModelAttribute Home home, Model model) {
-		homeService.saveHome(home);
-		return "redirect:/homes";
-	}
+    @GetMapping("/homes")
+    public String showHomeInfo(Model model) {
+        model.addAttribute("home", homeService.getAllHome());
 
-	@GetMapping("/showFormForUpdate/{id}")
-	public String showFormForUpdate(@PathVariable (value = "id") long id, Model model) {
+        return "homeDetails";
+    }
 
-		// get employee from the service
-		Home home = homeService.getHomeById(id);
+    @GetMapping("/addHome")
+    public String showHomeAddForm(Model model) {
+        Home home = new Home();
+        model.addAttribute("home", home);
+        return "addOrUpdateHomeInfo";
+    }
 
-		// set employee as a model attribute to pre-populate the form
-		model.addAttribute("home", home);
-		return "updateHome";
-	}
+    @PostMapping("/save")
+    public String saveHomeDetails(@ModelAttribute Home home, Model model) {
+        homeService.saveHome(home);
+        return "redirect:/homes";
+    }
+
+    @GetMapping("/showFormForUpdate/{id}")
+    public String showFormForUpdate(@PathVariable(value = "id") long id, Model model) {
+
+        // get employee from the service
+        Home home = homeService.getHomeById(id);
+
+        // set employee as a model attribute to pre-populate the form
+        model.addAttribute("home", home);
+        return "updateHome";
+    }
 
 }

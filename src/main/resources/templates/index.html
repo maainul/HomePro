@@ -87,9 +87,9 @@
                                     <div class="tile-stats">
                                         <div class="icon"><i class="fa fa-check-square-o"></i>
                                         </div>
-                                        <div class="count">179</div>
+                                        <div class="count"><span th:text="${totalExpense}"></span></div>
 
-                                        <h3>Total Spent Money</h3>
+                                        <h3>Total Expense Money</h3>
                                         <!--  <p>Lorem ipsum psdea itgum rixt.</p> -->
                                     </div>
                                 </div>
@@ -98,9 +98,9 @@
                                     <div class="tile-stats">
                                         <div class="icon"><i class="fa fa-check-square-o"></i>
                                         </div>
-                                        <div class="count">179</div>
+                                        <div class="count"><span th:text="${totalRent}"></span></div>
 
-                                        <h3>Total Profit</h3>
+                                        <h3>Total Rent</h3>
                                         <!--  <p>Lorem ipsum psdea itgum rixt.</p> -->
                                     </div>
                                 </div>
@@ -132,12 +132,38 @@
                                     <div class="tile-stats">
                                         <div class="icon"><i class="fa fa-check-square-o"></i>
                                         </div>
-                                        <div class="count">179</div>
+                                        <div class="count"><span th:text="${totalRenters}"></span></div>
 
                                         <h3>Total Renters</h3>
                                         <!--  <p>Lorem ipsum psdea itgum rixt.</p> -->
                                     </div>
                                 </div>
+
+                                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6  ">
+                                    <div class="tile-stats">
+                                        <div class="icon"><i class="fa fa-check-square-o"></i>
+                                        </div>
+                                        <div class="count"><span th:text="${male}"></span></div>
+
+                                        <h3>Male Renter</h3>
+                                        <!--  <p>Lorem ipsum psdea itgum rixt.</p> -->
+                                    </div>
+                                </div>
+
+
+                                <div class="animated flipInY col-lg-3 col-md-3 col-sm-6  ">
+                                    <div class="tile-stats">
+                                        <div class="icon"><i class="fa fa-check-square-o"></i>
+                                        </div>
+                                        <div class="count"><span th:text="${female}"></span></div>
+
+                                        <h3>Female</h3>
+                                        <!--  <p>Lorem ipsum psdea itgum rixt.</p> -->
+                                    </div>
+                                </div>
+
+
+
                             </div>
                         </div>
                         <!-- /top tiles -->

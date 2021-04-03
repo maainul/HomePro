@@ -25,7 +25,7 @@
 <div th:fragment="navigation">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Home Pro!</span></a>
+            <a th:href="@{/}" class="site_title"><i class="fa fa-paw"></i> <span>Home Pro!</span></a>
         </div>
 
         <div class="clearfix"></div>
@@ -77,8 +77,6 @@
                             <li><a th:href="@{/addRenter}">Add Renter Info</a></li>
                             <li><a th:href="@{/renterList}">Renter List Table</a></li>
                             <li><a href="renterList.html">RenterList With Photo</a></li>
-                            <li><a th:href="@{/addGender}">Add Gender</a></li>
-                            <li><a th:href="@{/genderList}">Gender List</a></li>
                         </ul>
                     </li>
 

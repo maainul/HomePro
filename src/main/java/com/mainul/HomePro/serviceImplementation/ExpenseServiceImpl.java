@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ExpenseServiceImpl implements ExpenseService {
@@ -35,6 +36,13 @@ public class ExpenseServiceImpl implements ExpenseService {
             throw new RuntimeException("No Expense Found for id = " + id);
         }
         return expense;
+    }
+
+    @Override
+    public int countExpense() {
+        List<Expense> expenseList = expenseRepository.findAll();
+        int total = expenseList.stream().collect(Collectors.summingInt((Expense::getExpenseAmount)));
+        return total;
     }
 
 

@@ -1,4 +1,4 @@
-$('.table #photoButton').on('click',function(event) {
+$('.table #photoButton').on('click', function (event) {
     event.preventDefault();
     var href = $(this).attr('href');
     $('#photoModal #renterPhoto').attr('src', href);

@@ -12,4 +12,9 @@ public interface RentService {
 
     public Rent getRentById(Long id);
 
+    int totalRent();
+
+    int totalElectricityBill();
+
+
 }

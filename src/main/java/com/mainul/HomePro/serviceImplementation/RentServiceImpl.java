@@ -36,4 +36,27 @@ public class RentServiceImpl implements RentService {
         }
         return rent;
     }
+
+    @Override
+    public int totalRent() {
+        List<Rent> rents = rentRepository.findAll();
+        int rentTotal = 0;
+        for (Rent rent : rents){
+           // System.out.println(rent.getRoomRent());
+            rentTotal += rent.getRoomRent();
+        }
+        return rentTotal;
+    }
+
+    @Override
+    public int totalElectricityBill() {
+        List<Rent> rents = rentRepository.findAll();
+        int totalElectricityBill = 0;
+        for (Rent rent : rents){
+            totalElectricityBill += rent.getElectricityBill();
+        }
+        return totalElectricityBill;
+    }
+
+
 }

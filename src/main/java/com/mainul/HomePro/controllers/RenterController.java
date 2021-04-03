@@ -1,18 +1,22 @@
 package com.mainul.HomePro.controllers;
 
 import com.mainul.HomePro.models.Renter;
-import com.mainul.HomePro.repository.RenterRepository;
 import com.mainul.HomePro.service.RenterService;
+import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+
 
 @Controller
 public class RenterController {
@@ -36,8 +40,31 @@ public class RenterController {
     }
 
     @PostMapping("/addRenter")
-    public String addRenter(@ModelAttribute Renter renter, Model model) {
-        renterService.saveRenter(renter);
+    public String addRenter(@ModelAttribute(name = "renter") Renter renter, Model model, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+
+        // 1. get original file name
+        String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
+        //2. set filename to the object
+        renter.setRenterImage(fileName);
+        //3. create object to find id
+        Renter savedRenter = renterService.saveRenter(renter);
+        //4. create image upload directory
+        String uploadDir = "./renter-images/" + savedRenter.getId();
+
+        Path uploadPath = Paths.get(uploadDir);
+
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+
+        try (InputStream inputStream = multipartFile.getInputStream()) {
+            Path filePath = uploadPath.resolve(fileName);
+            Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        } catch (IOException e) {
+            throw new IOException("Could not save uploade file : " + fileName);
+        }
+
+       // renterService.saveRenter(renter);
         return "redirect:/addRenter";
 
     }
