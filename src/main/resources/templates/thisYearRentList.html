@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>This Month Data</title>
+    <title>This Year Data</title>
 
     <!-- Bootstrap -->
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -51,7 +51,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Rents <small>This month rent information</small></h3>
+                        <h3>Rents <small>This Year rent information</small></h3>
                     </div>
 
                     <div class="title_right">
@@ -98,7 +98,7 @@
                                                 </tr>
                                                 </thead>
                                                 <tbody>
-                                                <tr th:each="rent : ${thisMonthRentDetails}">
+                                                <tr th:each="rent : ${thisYearRentDetails}">
                                                     <td th:text="${#dates.format(rent.rentalPaymentDate, 'dd-MMM-yyyy')}"></td>
                                                     <td th:text="${rent.room.roomName}"></td>
                                                     <td th:text="${rent.roomRent}"></td>

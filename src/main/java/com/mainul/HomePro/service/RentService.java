@@ -25,4 +25,6 @@ public interface RentService {
 
     List<Rent> currentMonthRentList();
 
+    List<Rent> currentYearRentList();
+
 }

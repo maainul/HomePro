@@ -54,4 +54,10 @@ public class RentController {
         return "thisMonthRentDetails";
     }
 
+    @GetMapping("/thisYearRentList")
+    public String thisYearRentDetails(Model model){
+        model.addAttribute("thisYearRentDetails",rentService.currentYearRentList());
+        return "thisYearRentList";
+    }
+
 }

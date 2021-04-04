@@ -95,16 +95,24 @@ public class RentServiceImpl implements RentService {
         return total;
     }
 
-    @Override
-    public int countCurrentYearRent() {
-        Date todayDate = new Date();
-        LocalDateTime localDateTime = DateTimeConverter.dateToLocalDateTimeConverter(todayDate);
+
+    public List<Rent> getYear(Date randomDate) {
+        LocalDateTime localDateTime = DateTimeConverter.dateToLocalDateTimeConverter(randomDate);
         LocalDateTime fDayOfYear = localDateTime.with(firstDayOfYear());
         LocalDateTime lDatOfyear = localDateTime.with(lastDayOfYear());
         Date f = DateTimeConverter.localDateTimeToDateConverter(fDayOfYear);
         Date l = DateTimeConverter.localDateTimeToDateConverter(lDatOfyear);
         List<Rent> dateList = rentRepository.findRentsByRentalPaymentDateBetween(f, l);
+        return dateList;
+    }
+
+
+    @Override
+    public int countCurrentYearRent() {
+        Date todayDate = new Date();
+        List<Rent> dateList = getYear(todayDate);
         int total = 0;
+
         for (Rent rent : dateList) {
             total += rent.getRoomRent();
         }
@@ -116,5 +124,13 @@ public class RentServiceImpl implements RentService {
         Date date = new Date();
         return getAllDataByMonth(date);
     }
+
+    @Override
+    public List<Rent> currentYearRentList() {
+        Date date = new Date();
+        List<Rent> dateList = getYear(date);
+        return dateList;
+    }
+
 
 }
