@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+
 import static java.time.temporal.TemporalAdjusters.firstDayOfMonth;
 import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
 import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
@@ -37,9 +38,9 @@ public class RentServiceImpl implements RentService {
     public Rent getRentById(Long id) {
         Optional<Rent> optional = rentRepository.findById(id);
         Rent rent = null;
-        if (optional.isPresent()){
+        if (optional.isPresent()) {
             rent = optional.get();
-        }else {
+        } else {
             throw new RuntimeException("no rent found");
         }
         return rent;
@@ -49,8 +50,8 @@ public class RentServiceImpl implements RentService {
     public int totalRent() {
         List<Rent> rents = rentRepository.findAll();
         int rentTotal = 0;
-        for (Rent rent : rents){
-           // System.out.println(rent.getRoomRent());
+        for (Rent rent : rents) {
+            // System.out.println(rent.getRoomRent());
             rentTotal += rent.getRoomRent();
         }
         return rentTotal;
@@ -60,7 +61,7 @@ public class RentServiceImpl implements RentService {
     public int totalElectricityBill() {
         List<Rent> rents = rentRepository.findAll();
         int totalElectricityBill = 0;
-        for (Rent rent : rents){
+        for (Rent rent : rents) {
             totalElectricityBill += rent.getElectricityBill();
         }
         return totalElectricityBill;
@@ -78,7 +79,7 @@ public class RentServiceImpl implements RentService {
         Date f = DateTimeConverter.localDateTimeToDateConverter(firstDay);
         Date s = DateTimeConverter.localDateTimeToDateConverter(lastDay);
 
-        List<Rent> dateList = rentRepository.findRentsByRentalPaymentDateBetween(f,s);
+        List<Rent> dateList = rentRepository.findRentsByRentalPaymentDateBetween(f, s);
 
         return dateList;
     }
@@ -88,7 +89,7 @@ public class RentServiceImpl implements RentService {
         Date todayDate = new Date();
         List<Rent> dateList = getAllDataByMonth(todayDate);
         int total = 0;
-        for(Rent date : dateList){
+        for (Rent date : dateList) {
             total += date.getRoomRent();
         }
         return total;
@@ -102,12 +103,18 @@ public class RentServiceImpl implements RentService {
         LocalDateTime lDatOfyear = localDateTime.with(lastDayOfYear());
         Date f = DateTimeConverter.localDateTimeToDateConverter(fDayOfYear);
         Date l = DateTimeConverter.localDateTimeToDateConverter(lDatOfyear);
-        List<Rent> dateList = rentRepository.findRentsByRentalPaymentDateBetween(f,l);
+        List<Rent> dateList = rentRepository.findRentsByRentalPaymentDateBetween(f, l);
         int total = 0;
-        for (Rent rent : dateList){
+        for (Rent rent : dateList) {
             total += rent.getRoomRent();
         }
         return total;
+    }
+
+    @Override
+    public List<Rent> currentMonthRentList() {
+        Date date = new Date();
+        return getAllDataByMonth(date);
     }
 
 }

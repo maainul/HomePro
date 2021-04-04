@@ -47,4 +47,11 @@ public class RentController {
         return "updateRentInfo";
     }
 
+
+    @GetMapping("/thisMonthRentDetails")
+    public String thisMonthRentInfo(Model model){
+        model.addAttribute("thisMonthRentDetails",rentService.currentMonthRentList());
+        return "thisMonthRentDetails";
+    }
+
 }

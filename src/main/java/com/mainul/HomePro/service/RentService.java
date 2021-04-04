@@ -23,4 +23,6 @@ public interface RentService {
 
     int countCurrentYearRent();
 
+    List<Rent> currentMonthRentList();
+
 }
