@@ -106,8 +106,15 @@
                                                     <td th:text="${expense.description}"></td>
 
                                                     <td>
-                                                        <a th:href="@{/updateExpenseInfo/{id}(id=${expense.id})}" class="btn btn-primary">Update</a>
+                                                        <a href="#" class="btn btn-primary btn-xs"><i
+                                                                class="fa fa-folder"></i> View </a>
+                                                        <a th:href="@{/updateExpenseInfo/{id}(id=${expense.id})}"
+                                                           class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i
+                                                                class="fa fa-trash-o"></i> Delete </a>
                                                     </td>
+
                                                 </tr>
 
                                                 </tbody>

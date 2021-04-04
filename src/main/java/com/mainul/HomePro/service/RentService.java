@@ -2,6 +2,7 @@ package com.mainul.HomePro.service;
 
 import com.mainul.HomePro.models.Rent;
 
+import java.util.Date;
 import java.util.List;
 
 public interface RentService {
@@ -16,5 +17,10 @@ public interface RentService {
 
     int totalElectricityBill();
 
+    List<Rent> getAllDataByMonth(Date randomDate);
+
+    int countMonthWiseRentAmount();
+
+    int countCurrentYearRent();
 
 }

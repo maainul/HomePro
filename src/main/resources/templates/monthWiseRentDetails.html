@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>DataTables | Gentelella</title>
+    <title>Month Wise Data</title>
 
     <!-- Bootstrap -->
     <link href="cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
@@ -89,21 +89,18 @@
                     <table id="datatable" class="table table-striped table-bordered" style="width:100%">
                       <thead>
                         <tr>
-                          <th>Room Name</th>
-                          <th>Floor</th>
-                          <th>Rent date</th>
-                          <th>Paid/Unpaid</th>
+                          <th>Date</th>
+                          <th>Room Number</th>
+                          <th>Room Rent</th>
+                          <th>Status</th>
                          
                         </tr>
                       </thead>
-
-
                       <tbody>
-                        <tr>
-                          <td>Tiger Nixon</td>
-                          <td>Edinburgh</td>
-                          <td>2011/04/25</td>
-                         
+                        <tr th:each="rent : ${listRents}">
+                            <td th:text="${#dates.format(rent.rentalPaymentDate, 'dd-MMM-yyyy')}"></td>
+                            <td>Room Number</td>
+                            <td th:text="${rent.roomRent}"></td>
                            <td>Yes</td>
                         </tr>
                        

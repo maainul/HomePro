@@ -93,14 +93,22 @@
                                                 <tr>
                                                     <th>Floor Id</th>
                                                     <th>Floor Name</th>
-
+                                                    <th></th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr th:each="floor : ${listFloors}">
                                                     <td th:text="${floor.id}"></td>
                                                     <td th:text="${floor.floorName}"></td>
-                                                    <td><a th:href="@{/floorUpdateForm/{id}(id=${floor.id})}" class="btn btn-primary">Update</a></td>
+                                                    <td>
+                                                        <a href="#" class="btn btn-primary btn-xs"><i
+                                                                class="fa fa-folder"></i> View </a>
+                                                        <a th:href="@{/floorUpdateForm/{id}(id=${floor.id})}"
+                                                           class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit
+                                                        </a>
+                                                        <a href="#" class="btn btn-danger btn-xs"><i
+                                                                class="fa fa-trash-o"></i> Delete </a>
+                                                    </td>
                                                 </tr>
                                                 </tbody>
 

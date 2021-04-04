@@ -22,16 +22,19 @@ public class IndexController {
     @Autowired
     private RenterService renterService;
 
+
     @GetMapping("/")
     public String index(Model model) {
         int count = (int) roomService.roomList().stream().count();
         model.addAttribute("count", count);
         model.addAttribute("totalExpense", expenseService.countExpense());
-        model.addAttribute("female",renterService.countFemale());
-        model.addAttribute("male",renterService.countMale());
-        model.addAttribute("totalRenters",renterService.totalRenter());
-        model.addAttribute("electricityBill",rentService.totalElectricityBill());
-        model.addAttribute("totalRent",rentService.totalRent());
+        model.addAttribute("female", renterService.countFemale());
+        model.addAttribute("male", renterService.countMale());
+        model.addAttribute("totalRenters", renterService.totalRenter());
+        model.addAttribute("electricityBill", rentService.totalElectricityBill());
+        model.addAttribute("totalRent", rentService.totalRent());
+        model.addAttribute("thisMonthRent", rentService.countMonthWiseRentAmount());
+        model.addAttribute("thisYearRent", rentService.countCurrentYearRent());
         return "index";
     }
 
