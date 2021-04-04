@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class ExpenseTypeController {
 
-    @Autowired
-    private ExpenseTypeService expenseTypeService;
+    @Autowired private ExpenseTypeService expenseTypeService;
 
     @GetMapping("/addExpenseType")
     public String showExpenseTypeForm(Model model) {
