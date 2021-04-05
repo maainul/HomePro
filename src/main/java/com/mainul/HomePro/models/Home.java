@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-public class Home {
+public class Home extends AuditModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

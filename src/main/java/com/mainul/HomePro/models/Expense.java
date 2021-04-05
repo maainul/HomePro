@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-public class Expense {
+public class Expense extends AuditModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

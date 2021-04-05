@@ -14,7 +14,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Renter {
+public class Renter extends AuditModel{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;

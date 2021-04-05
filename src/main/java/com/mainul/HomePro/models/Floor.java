@@ -10,7 +10,7 @@ import java.util.List;
 
 
 @Entity
-public class Floor {
+public class Floor extends AuditModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

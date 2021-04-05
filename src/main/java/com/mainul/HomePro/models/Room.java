@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-public class Room {
+public class Room extends AuditModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
