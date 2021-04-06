@@ -27,6 +27,9 @@ https://www.pixeltrice.com/send-an-sms-or-message-from-spring-boot-application-t
 
 https://www.pixeltrice.com/how-to-send-email-using-spring-boot-application/
 
+# 6. Send Email List of Users
+
+https://www.youtube.com/watch?v=EVAI6LznDLM&ab_channel=MyProgrammingTask
 
 # Preview Before Upload
 
