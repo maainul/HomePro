@@ -37,4 +37,10 @@ public class ExpenseTypeServiceImpl implements ExpenseTypeService {
         }
         return expenseType;
     }
+
+    @Override
+    public void removeExpenseType(Long id) {
+        expenseRepository.deleteById(id);
+    }
+
 }

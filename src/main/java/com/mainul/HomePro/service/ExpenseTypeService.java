@@ -12,4 +12,6 @@ public interface ExpenseTypeService {
 
     ExpenseType getExpenseTypeById(Long id);
 
+    void removeExpenseType(Long id);
+
 }

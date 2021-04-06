@@ -43,5 +43,11 @@ public class ExpenseTypeController {
         return "updateExpense";
     }
 
+    @GetMapping("/deleteExpenseType/{id}")
+    public String expenseType(@PathVariable(value = "id") Long id, Model model){
+        ExpenseType expenseType = expenseTypeService.getExpenseTypeById(id);
+        expenseTypeService.removeExpenseType(id);
+        return "redirect:/expenseTypes";
+    }
 
 }
