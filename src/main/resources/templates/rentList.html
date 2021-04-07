@@ -107,7 +107,7 @@
                                                     <td th:text="${rent.internetBill}"></td>
 
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
+                                                        <a th:href="@{/rentDetails/{id}(id=${rent.id})}" class="btn btn-primary btn-xs"><i
                                                                 class="fa fa-folder"></i> View </a>
                                                         <a th:href="@{/updateRentInfo/{id}(id=${rent.id})}"
                                                            class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit

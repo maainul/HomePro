@@ -101,22 +101,21 @@
                                                 <tbody>
                                                 <tr th:each="room : ${roomList}">
                                                     <td th:text="${room.roomName}"></td>
-                                               <!--     <td>
-                                                        <p th:each="floor : ${floorList}" th:if = "(${floor.id} == ${room.id})" th:text="${floor.floorName}"></p>
-                                                    </td>-->
                                                     <td th:text="${room.floor.floorName}"></td>
                                                     <td th:text="${room.roomRent}"></td>
                                                     <td th:text="${room.gasBill}"></td>
                                                     <td th:text="${room.internetBill}"></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
+                                                        <a th:href="@{/roomDetails/{id}(id=${room.id})}"
+                                                           class="btn btn-primary btn-xs"><i
                                                                 class="fa fa-folder"></i> View </a>
                                                         <a th:href="@{/updateRoomInfo/{id}(id=${room.id})}"
                                                            class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit
                                                         </a>
-                                                        <a th:href="@{/delete/room/{id}(id=${room.id})}">
-                                                            class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Delete
-                                                        </a>
+
+                                                        <a th:href="@{/room/delete/{id}(id=${room.id})}"
+                                                           class="btn btn-danger btn-xs"><i
+                                                                class="fa fa-trash-o"></i> Delete </a>
                                                     </td>
 
                                                 </tr>

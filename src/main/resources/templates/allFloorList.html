@@ -101,7 +101,7 @@
                                                     <td th:text="${floor.id}"></td>
                                                     <td th:text="${floor.floorName}"></td>
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
+                                                        <a th:href="@{/floorDetails/{id}(id=${floor.id})}" class="btn btn-primary btn-xs"><i
                                                                 class="fa fa-folder"></i> View </a>
                                                         <a th:href="@{/floorUpdateForm/{id}(id=${floor.id})}"
                                                            class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit

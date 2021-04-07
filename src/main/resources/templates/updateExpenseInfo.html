@@ -103,7 +103,7 @@
                                         <div class="col-md-6 col-sm-6">
                                             <select class="form-control" id="ddlCountryAdd" name="expenseTypeid">
                                                 <option>-SELECT-</option>
-                                                <option th:each="f : ${exenseTypeList}"
+                                                <option th:each="f : ${expenseTypeList}"
                                                         th:value="${f.id}"
                                                         th:text="${f.expenseTypeName}">
                                                 </option>

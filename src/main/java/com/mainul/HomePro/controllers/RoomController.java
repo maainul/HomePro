@@ -52,4 +52,11 @@ public class RoomController {
         return "redirect:/roomList";
     }
 
+    @GetMapping("/roomDetails/{id}")
+    public String roomDetailsInfo(@PathVariable(value = "id") Long id, Model model){
+        model.addAttribute("room",roomService.findRoomById(id));
+        return "roomDetails";
+    }
+
+
 }

@@ -51,4 +51,12 @@ public class FloorController {
         return "redirect:/floorList";
     }
 
+    @GetMapping("/floorDetails/{id}")
+    public String showFloorDetailsById(@PathVariable(value = "id") Long id, Model model){
+        model.addAttribute("floor",floorService.getFloorById(id));
+        return "floorDetails";
+    }
+
+
+
 }

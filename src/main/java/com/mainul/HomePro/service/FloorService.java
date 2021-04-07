@@ -14,4 +14,7 @@ public interface FloorService {
     Floor getFloorById(long id);
 
     void deleteFloorById(Long id);
+
+
+
 }

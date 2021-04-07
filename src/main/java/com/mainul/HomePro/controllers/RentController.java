@@ -75,12 +75,17 @@ public class RentController {
     }
 
     @GetMapping("/rent/delete/{id}")
-    public String deleteRent(@PathVariable(value = "id") Long id){
+    public String deleteRent(@PathVariable(value = "id") Long id) {
         rentService.deleteRentById(id);
         return "redirect:/rentList";
 
     }
 
+    @GetMapping("/rentDetails/{id}")
+    public String rentDetails(@PathVariable(value = "id") Long id, Model model) {
+        model.addAttribute("rent",rentService.getRentById(id));
+        return "rentDetails";
+    }
 
 
     @GetMapping("/rent/export/pdf")

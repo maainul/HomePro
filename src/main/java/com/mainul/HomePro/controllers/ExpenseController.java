@@ -63,6 +63,11 @@ public class ExpenseController {
         expenseService.deleteExpenseById(id);
         return "/expenseList";
     }
+    @GetMapping("/expenseDetails/{id}")
+    public String expenseDetails(@PathVariable (value = "id") Long id, Model model){
+        model.addAttribute("expense",expenseService.findExpenseById(id));
+        return "expenseDetails";
+    }
 
 
 
