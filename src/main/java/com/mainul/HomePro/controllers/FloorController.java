@@ -45,4 +45,10 @@ public class FloorController {
         return "updateFloor";
     }
 
+    @GetMapping("/floor/delete/{id}")
+    public String deleteFloor(@PathVariable(value = "id") Long id){
+        floorService.deleteFloorById(id);
+        return "redirect:/floorList";
+    }
+
 }

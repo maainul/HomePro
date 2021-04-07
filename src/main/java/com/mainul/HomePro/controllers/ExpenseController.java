@@ -58,6 +58,14 @@ public class ExpenseController {
         return "updateExpenseInfo";
     }
 
+    @GetMapping("/expense/delete/{id}}")
+    public String deleteExpense(@PathVariable(value = "id") Long id, Model model){
+        expenseService.deleteExpenseById(id);
+        return "/expenseList";
+    }
+
+
+
     @GetMapping("/expense/export/pdf")
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException, ParseException {
         response.setContentType("application/pdf");

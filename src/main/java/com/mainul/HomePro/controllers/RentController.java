@@ -74,6 +74,14 @@ public class RentController {
         return "thisYearRentList";
     }
 
+    @GetMapping("/rent/delete/{id}")
+    public String deleteRent(@PathVariable(value = "id") Long id){
+        rentService.deleteRentById(id);
+        return "redirect:/rentList";
+
+    }
+
+
 
     @GetMapping("/rent/export/pdf")
     public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException, ParseException {

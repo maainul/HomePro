@@ -80,4 +80,11 @@ public class RenterController {
         model.addAttribute("renter", renterService.getRenterById(id));
         return "updateRenterInfo";
     }
+
+    @GetMapping("/renter/delete/{id}")
+    public String deleteRenter(@PathVariable(value = "id") Long id){
+        renterService.deleteRenterById(id);
+        return "redirect:/renterList";
+    }
+
 }
