@@ -41,6 +41,11 @@ public class RenterServiceImpl implements RenterService {
     }
 
     @Override
+    public void deleteRenterById(Long id) {
+        renterRepository.deleteById(id);
+    }
+
+    @Override
     public int countMale() {
         List<Renter> renters = renterRepository.findAll();
         int count = 0;

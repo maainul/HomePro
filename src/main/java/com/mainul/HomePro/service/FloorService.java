@@ -12,4 +12,6 @@ public interface FloorService {
     List<Floor> getAllFloors();
 
     Floor getFloorById(long id);
+
+    void deleteFloorById(Long id);
 }

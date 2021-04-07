@@ -12,6 +12,8 @@ public interface RenterService {
 
     public Renter getRenterById(Long id);
 
+    void deleteRenterById(Long id);
+
     public int countMale();
 
     public int countFemale();

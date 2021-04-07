@@ -35,6 +35,11 @@ public class RentServiceImpl implements RentService {
     }
 
     @Override
+    public void deleteRentById(Long id) {
+            rentRepository.deleteById(id);
+    }
+
+    @Override
     public Rent getRentById(Long id) {
         Optional<Rent> optional = rentRepository.findById(id);
         Rent rent = null;

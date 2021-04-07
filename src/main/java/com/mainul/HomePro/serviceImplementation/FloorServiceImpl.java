@@ -37,5 +37,10 @@ public class FloorServiceImpl implements FloorService {
         return floor;
     }
 
+    @Override
+    public void deleteFloorById(Long id) {
+        floorRepository.deleteById(id);
+    }
+
 
 }

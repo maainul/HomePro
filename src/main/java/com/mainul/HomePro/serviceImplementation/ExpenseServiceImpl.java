@@ -39,6 +39,11 @@ public class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
+    public void deleteExpenseById(Long id) {
+        expenseRepository.deleteById(id);
+    }
+
+    @Override
     public int countExpense() {
         List<Expense> expenseList = expenseRepository.findAll();
         int total = expenseList.stream().collect(Collectors.summingInt((Expense::getExpenseAmount)));

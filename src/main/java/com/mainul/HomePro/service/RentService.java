@@ -11,6 +11,9 @@ public interface RentService {
 
     public List<Rent> getAllRent();
 
+    void deleteRentById(Long id);
+
+
     public Rent getRentById(Long id);
 
     int totalRent();

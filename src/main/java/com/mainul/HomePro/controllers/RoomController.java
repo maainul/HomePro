@@ -46,4 +46,10 @@ public class RoomController {
         return "updateRoomInfo";
     }
 
+    @GetMapping("/room/delete/{id}")
+    public String deleteRoom(@PathVariable(value = "id") Long id, Model model){
+        roomService.deleteRoom(id);
+        return "redirect:/roomList";
+    }
+
 }
