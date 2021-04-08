@@ -2,6 +2,7 @@ package com.mainul.HomePro.controllers;
 
 import com.lowagie.text.DocumentException;
 import com.mainul.HomePro.models.Expense;
+import com.mainul.HomePro.models.ExpenseType;
 import com.mainul.HomePro.service.ExpenseTypeService;
 import com.mainul.HomePro.service.FloorService;
 import com.mainul.HomePro.service.ExpenseService;
@@ -58,11 +59,13 @@ public class ExpenseController {
         return "updateExpenseInfo";
     }
 
-    @GetMapping("/expense/delete/{id}}")
+    @GetMapping("/deleteExpense/{id}")
     public String deleteExpense(@PathVariable(value = "id") Long id, Model model){
         expenseService.deleteExpenseById(id);
-        return "/expenseList";
+        return "redirect:/expenseList";
     }
+
+
     @GetMapping("/expenseDetails/{id}")
     public String expenseDetails(@PathVariable (value = "id") Long id, Model model){
         model.addAttribute("expense",expenseService.findExpenseById(id));
