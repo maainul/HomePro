@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Update Expense Info! | </title>
+    <title>Add Rent Info! | </title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -41,7 +41,7 @@
             <div class="">
                 <div class="page-title">
                     <div class="title_left">
-                        <h3>Update Expense Information</h3>
+                        <h3>Add Rent Information</h3>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -50,7 +50,7 @@
                     <div class="col-md-12 col-sm-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Update Expense Information</h2>
+                                <h2>Add Rent Information</h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -142,11 +142,11 @@
                                     </div>
 
                                     <div class="field item form-group">
-                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Rental Payment Date<span
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Rent Month<span
                                                 class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6">
-                                            <input type="date" class="form-control" name="rentalPaymentDate"
-                                                   th:field="*{rentalPaymentDate}">
+                                            <input type="date" class="form-control" name="rentMonth"
+                                                   th:field="*{rentMonth}">
                                         </div>
                                     </div>
 
@@ -187,25 +187,24 @@
 <script>
     // initialize a validator instance from the "FormValidator" constructor.
     // A "<form>" element is optionally passed as an argument, but is not a must
-    var validator = new FormValidator({ "events": ['blur', 'input', 'change'] }, document.forms[0]);
+    var validator = new FormValidator({"events": ['blur', 'input', 'change']}, document.forms[0]);
     // on form "submit" event
     document.forms[0].onsubmit = function (e) {
-      var submit = true,
-        validatorResult = validator.checkAll(this);
-      console.log(validatorResult);
-      return !!validatorResult.valid;
+        var submit = true,
+            validatorResult = validator.checkAll(this);
+        console.log(validatorResult);
+        return !!validatorResult.valid;
     };
     // on form "reset" event
     document.forms[0].onreset = function (e) {
-      validator.reset();
+        validator.reset();
     };
     // stuff related ONLY for this demo page:
     $('.toggleValidationTooltips').change(function () {
-      validator.settings.alerts = !this.checked;
-      if (this.checked)
-        $('form .alert').remove();
+        validator.settings.alerts = !this.checked;
+        if (this.checked)
+            $('form .alert').remove();
     }).prop('checked', false);
-
 
 
 </script>

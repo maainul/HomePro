@@ -63,8 +63,6 @@ public class RenterController {
         } catch (IOException e) {
             throw new IOException("Could not save uploade file : " + fileName);
         }
-
-       // renterService.saveRenter(renter);
         return "redirect:/addRenter";
 
     }
@@ -81,10 +79,17 @@ public class RenterController {
         return "updateRenterInfo";
     }
 
-    @GetMapping("/renter/delete/{id}")
+    @GetMapping("/renterDelete/{id}")
     public String deleteRenter(@PathVariable(value = "id") Long id){
         renterService.deleteRenterById(id);
         return "redirect:/renterList";
+    }
+
+
+    @GetMapping("/renterDetails/{id}")
+    public String renterDetails(@PathVariable(value = "id") Long id, Model model){
+        model.addAttribute("renter", renterService.getRenterById(id));
+        return "renterDetails";
     }
 
 }

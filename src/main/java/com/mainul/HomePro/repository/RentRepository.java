@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface RentRepository extends JpaRepository<Rent, Long> {
 
-    List<Rent> findRentsByRentalPaymentDateBetween(Date rentalPaymentDate, Date rentalPaymentDate2);
+    List<Rent> findRentsByRentMonthBetween(Date rentMonth, Date rentalPaymentDate2);
+
 }

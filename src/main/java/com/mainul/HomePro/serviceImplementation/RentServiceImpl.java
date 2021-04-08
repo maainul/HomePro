@@ -84,7 +84,7 @@ public class RentServiceImpl implements RentService {
         Date f = DateTimeConverter.localDateTimeToDateConverter(firstDay);
         Date s = DateTimeConverter.localDateTimeToDateConverter(lastDay);
 
-        List<Rent> dateList = rentRepository.findRentsByRentalPaymentDateBetween(f, s);
+        List<Rent> dateList = rentRepository.findRentsByRentMonthBetween(f, s);
 
         return dateList;
     }
@@ -107,7 +107,7 @@ public class RentServiceImpl implements RentService {
         LocalDateTime lDatOfyear = localDateTime.with(lastDayOfYear());
         Date f = DateTimeConverter.localDateTimeToDateConverter(fDayOfYear);
         Date l = DateTimeConverter.localDateTimeToDateConverter(lDatOfyear);
-        List<Rent> dateList = rentRepository.findRentsByRentalPaymentDateBetween(f, l);
+        List<Rent> dateList = rentRepository.findRentsByRentMonthBetween(f, l);
         return dateList;
     }
 

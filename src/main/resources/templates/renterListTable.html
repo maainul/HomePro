@@ -115,70 +115,26 @@
 
                                                     <td th:text="${renter.phoneNumber1}">202</td>
 
-
                                                     <td>
                                                         <button type="button" class="btn btn-success btn-xs">Success
                                                         </button>
                                                     </td>
 
                                                     <td>
-                                                        <a href="#" class="btn btn-primary btn-xs"><i
+                                                        <a th:href="@{/renterDetails/{id}(id=${renter.id})}"
+                                                           class="btn btn-primary btn-xs"><i
                                                                 class="fa fa-folder"></i> View </a>
                                                         <a th:href="@{/updateRenter/{id}(id=${renter.id})}"
                                                            class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit
                                                         </a>
-                                                        <a href="#" class="btn btn-danger btn-xs"><i
+                                                        <a th:href="@{/renterDelete/{id}(id=${renter.id})}"
+                                                           class="btn btn-danger btn-xs"><i
                                                                 class="fa fa-trash-o"></i> Delete </a>
                                                     </td>
                                                 </tr>
 
                                                 </tbody>
                                             </table>
-                                            <!-- end project list -->
-
-                                            <!--                                  <table id="datatable" class="table table-striped table-bordered"
-                                                                                     style="width:100%">
-                                                                                  <thead>
-                                                                                  <tr>
-                                                                                      <td>Photo</td>
-                                                                                      <th>Name</th>
-                                                                                      <th>Phone Number</th>
-                                                                                      <th>Salary</th>
-                                                                                      <th>Room Number</th>
-                                                                                      <th>Room Rent</th>
-                                                                                      <th>Rental Date</th>
-                                                                                      <th>Action</th>
-
-                                                                                  </tr>
-                                                                                  </thead>
-
-
-                                                                                  <tbody>
-                                                                                  <tr th:each="renter : ${renterList}">
-                                                                                      <td>
-                                                                                          <a id="photoButton" th:href="@{${renter.rentersImagePath}}">
-                                                                                              <img class="img-rounded"
-                                                                                                   th:src="@{${renter.rentersImagePath}}" width="100"
-                                                                                                   height="100"/>
-                                                                                          </a>
-                                                                                      </td>
-                                                                                      <td th:text="${renter.firstName}">Mr.X</td>
-                                                                                      <td th:text="${renter.phoneNumber1}">202</td>
-                                                                                      <td th:text="${renter.salary}">30000</td>
-                                                                                      <td>NULL</td>
-                                                                                      <td>NULL</td>
-                                                                                      <td th:text="${#dates.format(renter.rentalDate, 'dd-MMM-yyyy')}"></td>
-                                                                                      <td>
-                                                                                          <a href="#" class="btn btn-primary btn-xs"><i
-                                                                                                  class="fa fa-folder"></i> View </a>
-                                                                                          <a th:href="@{/updateRenter/{id}(id=${renter.id})}"
-                                                                                             class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit
-                                                                                          </a>
-                                                                                          <a href="#" class="btn btn-danger btn-xs"><i
-                                                                                                  class="fa fa-trash-o"></i> Delete </a>
-                                                                                      </td>
-                                                                                  </tr>
-                                                                                  </tbody>-->
 
                                             </table>
                                         </div>

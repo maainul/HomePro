@@ -100,7 +100,7 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr th:each="rent : ${rentList}">
-                                                    <td th:text="${#dates.format(rent.rentalPaymentDate, 'dd-MMM-yyyy')}"></td>
+                                                    <td th:text="${#dates.format(rent.rentMonth, 'dd-MMM-yyyy')}"></td>
                                                     <td th:text="${rent.room.roomName}"></td>
                                                     <td th:text="${rent.roomRent}"></td>
                                                     <td th:text="${rent.gasBill}"></td>

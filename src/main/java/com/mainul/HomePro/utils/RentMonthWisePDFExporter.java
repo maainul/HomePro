@@ -54,7 +54,7 @@ public class RentMonthWisePDFExporter {
 
     private void writeTableData(PdfPTable table) throws ParseException, FileNotFoundException {
         for (Rent rent : listRents) {
-            Date date = rent.getRentalPaymentDate();
+            Date date = rent.getRentMonth();
             Format formatter = new SimpleDateFormat("dd/MM/yyyy");
             table.addCell(formatter.format(date));
             table.addCell(rent.getRoom().getRoomName());
