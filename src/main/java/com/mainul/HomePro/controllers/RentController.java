@@ -74,7 +74,7 @@ public class RentController {
         return "thisYearRentList";
     }
 
-    @GetMapping("/rent/delete/{id}")
+    @GetMapping("/deleteRent/{id}")
     public String deleteRent(@PathVariable(value = "id") Long id) {
         rentService.deleteRentById(id);
         return "redirect:/rentList";
