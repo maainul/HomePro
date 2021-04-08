@@ -1,5 +1,22 @@
 # HomePro
 
+
+
+
+# Add Expense
+![addExpense](https://user-images.githubusercontent.com/37740006/114049610-679c6900-98ad-11eb-8289-adf6a0d749b6.png)
+
+# Expense List
+![expenseList](https://user-images.githubusercontent.com/37740006/114049760-88fd5500-98ad-11eb-911f-15e7f0ccea1f.png)
+
+# Add Expense Type List
+![addExpenseType](https://user-images.githubusercontent.com/37740006/114049875-a16d6f80-98ad-11eb-879c-7cdb7bad2fcd.png)
+
+# Expense Type List
+![expensetypeList](https://user-images.githubusercontent.com/37740006/114049994-b9dd8a00-98ad-11eb-9311-7ed2cd50ce0e.png)
+
+
+
 # 1. Display One to Many RelationShip in a Table
 
 https://blog.nazrulkabir.com/2018/07/show-data-from-two-jpa-entity-on-same-page-using-spring-boot-and-thymeleaf/
