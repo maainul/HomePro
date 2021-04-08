@@ -1,4 +1,28 @@
 # HomePro
+# Index Page
+
+![homePage](https://user-images.githubusercontent.com/37740006/114082689-db4f6d80-98cf-11eb-849b-8592153c1457.png)
+
+
+#Add Home info
+![homeAdd](https://user-images.githubusercontent.com/37740006/114082630-cc68bb00-98cf-11eb-91a6-c2e0c57f5311.png)
+
+# Home Details
+
+![homeDetails](https://user-images.githubusercontent.com/37740006/114082736-ea362000-98cf-11eb-9bef-9884e3dfc34a.png)
+
+# Add Floor
+
+![addfloor](https://user-images.githubusercontent.com/37740006/114082781-fa4dff80-98cf-11eb-9c20-f05293335235.png)
+
+# Add Room
+
+![addRoom](https://user-images.githubusercontent.com/37740006/114082815-076aee80-98d0-11eb-96b3-e7a365f88350.png)
+
+# Month Wise Form
+
+![monthWiseFOrm](https://user-images.githubusercontent.com/37740006/114082960-37b28d00-98d0-11eb-9120-93b8beb20d49.png)
+
 
 # Rent List
 ![rentList](https://user-images.githubusercontent.com/37740006/114060974-b7802d80-98b7-11eb-9b99-830ed0bc36cd.png)
