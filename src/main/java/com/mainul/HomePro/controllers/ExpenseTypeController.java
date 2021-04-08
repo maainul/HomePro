@@ -3,6 +3,7 @@ package com.mainul.HomePro.controllers;
 import com.mainul.HomePro.models.ExpenseType;
 import com.mainul.HomePro.service.ExpenseTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,7 +32,6 @@ public class ExpenseTypeController {
 
     @GetMapping("/expenseTypes")
     public String expenseTypeList(Model model) {
-
         model.addAttribute("listExpense", expenseTypeService.getAllExpenseTypes());
         return "/expenseTypeList";
     }
@@ -40,7 +40,7 @@ public class ExpenseTypeController {
     public String expenseUpdate(@PathVariable(value = "id") Long id, Model model) {
         ExpenseType expenseType = expenseTypeService.getExpenseTypeById(id);
         model.addAttribute("expenseType", expenseType);
-        return "updateExpense";
+        return "updateExpenseType";
     }
 
     @GetMapping("/deleteExpenseType/{id}")
@@ -50,4 +50,10 @@ public class ExpenseTypeController {
         return "redirect:/expenseTypes";
     }
 
+
+    @GetMapping("/expenseTypeDetails/{id}")
+    public String expenseTypeDetails(@PathVariable(value = "id") Long id, Model model){
+        model.addAttribute("expenseType", expenseTypeService.getExpenseTypeById(id));
+        return "expenseTypeDetails";
+    }
 }
