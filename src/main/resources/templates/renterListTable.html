@@ -91,19 +91,18 @@
                                             <table class="table table-striped projects">
                                                 <thead>
                                                 <tr>
-                                                    <th style="width: 1%">#</th>
-                                                    <th style="width: 20%">Renter Name</th>
+
                                                     <th>image</th>
+                                                    <th style="width: 20%">Renter Name</th>
+
                                                     <th>Phone</th>
-                                                    <th>Status</th>
+                                                 <!--   <th>Status</th>-->
                                                     <th style="width: 20%">#Edit</th>
+                                                    <th>Send Mail</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
                                                 <tr th:each="renter : ${renterList}">
-                                                    <td>#</td>
-
-                                                    <td th:text="${renter.firstName}">Mr.X</td>
 
                                                     <td>
                                                         <a id="photoButton" th:href="@{${renter.rentersImagePath}}">
@@ -113,12 +112,13 @@
                                                         </a>
                                                     </td>
 
+                                                    <td th:text="${renter.firstName} +' ' + ${renter.middleName}+ ' '+ ${renter.lastName} ">Mr.X</td>
                                                     <td th:text="${renter.phoneNumber1}">202</td>
 
-                                                    <td>
-                                                        <button type="button" class="btn btn-success btn-xs">Success
+                                                   <!-- <td>
+                                                        <button type="button" class="btn btn-success btn-xs">Active
                                                         </button>
-                                                    </td>
+                                                    </td>-->
 
                                                     <td>
                                                         <a th:href="@{/renterDetails/{id}(id=${renter.id})}"
@@ -130,6 +130,15 @@
                                                         <a th:href="@{/renterDelete/{id}(id=${renter.id})}"
                                                            class="btn btn-danger btn-xs"><i
                                                                 class="fa fa-trash-o"></i> Delete </a>
+                                                    </td>
+
+                                                    <!-- <a class="btn btn-primary btn-xs" th:href="@{/sendMail/${renter.id}}"><i class="fa-info-circle"></i>Mail</a>-->
+                                                    <!--     <td><a th:href="@{/sendMail/${id}(id=${renter.id})}">Mail</a></td>
+     -->
+                                                    <td>
+                                                        <a th:href="@{/sendMail/{id}(id=${renter.id})}"
+                                                           class="btn btn-danger btn-xs"><i
+                                                                class="fa fa-info-circle"></i> Send Mail </a>
                                                     </td>
                                                 </tr>
 

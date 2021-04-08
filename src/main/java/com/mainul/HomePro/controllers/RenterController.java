@@ -4,12 +4,20 @@ import com.mainul.HomePro.models.Renter;
 import com.mainul.HomePro.service.RenterService;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.mail.internet.MimeMessage;
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -28,6 +36,10 @@ public class RenterController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, false));
     }
 */
+
+
+    @Autowired
+    private JavaMailSender mailSenderObj;
 
 
     @Autowired
@@ -80,16 +92,50 @@ public class RenterController {
     }
 
     @GetMapping("/renterDelete/{id}")
-    public String deleteRenter(@PathVariable(value = "id") Long id){
+    public String deleteRenter(@PathVariable(value = "id") Long id) {
         renterService.deleteRenterById(id);
         return "redirect:/renterList";
     }
 
 
     @GetMapping("/renterDetails/{id}")
-    public String renterDetails(@PathVariable(value = "id") Long id, Model model){
+    public String renterDetails(@PathVariable(value = "id") Long id, Model model) {
         model.addAttribute("renter", renterService.getRenterById(id));
         return "renterDetails";
+    }
+
+    @GetMapping("/sendMail/{id}")
+    public ResponseEntity<Renter> renterMail(@PathVariable(value = "id") Long id) {
+        Renter renter = renterService.getRenterById(id);
+        sendEmail(renter);
+        return new ResponseEntity<Renter>(HttpStatus.OK);
+    }
+
+    private void sendEmail(Renter renter) {
+        final String emailToRecipient = renter.getEmail();
+        final String emailSubject = "Your Information is Successfully Added in the database";
+
+        final String emailMessage1 = "<html> <body> <p>Dear Sir/Madam,</p><p>You have successfully Registered In this House"
+                + "<br><br>"
+                + "<table border='1' width='300px' style='text-align:center;font-size:20px;'><tr> <td colspan='2'>"
+                + "</td></tr><tr><td>Name</td><td>" + renter.getFirstName() + renter.getMiddleName() + renter.getLastName() + "</td></tr><tr><td>Address</td><td>"
+                + renter.getPermanentAddress() + "</td></tr><tr><td>Email</td><td>" + renter.getPhoneNumber1()
+                + "</td></tr></table> </body></html>";
+
+
+        mailSenderObj.send(new MimeMessagePreparator() {
+
+            @Override
+            public void prepare(MimeMessage mimeMessage) throws Exception {
+                MimeMessageHelper mimeMessageHelperObj = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+                mimeMessageHelperObj.setTo(emailToRecipient);
+                mimeMessageHelperObj.setText(emailMessage1, true);
+                mimeMessageHelperObj.setSubject(emailSubject);
+                FileSystemResource resource = new FileSystemResource(new File("/home/onik/Pictures/picture.jpg"));
+                mimeMessageHelperObj.addInline("homeImage", resource);
+
+            }
+        });
     }
 
 }

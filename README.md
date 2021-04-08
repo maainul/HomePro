@@ -74,6 +74,9 @@ https://www.pixeltrice.com/how-to-send-email-using-spring-boot-application/
 
 https://www.youtube.com/watch?v=EVAI6LznDLM&ab_channel=MyProgrammingTask
 
+# My Implementation of Email Send List of Users
+https://github.com/maainul/email-sending-list-of-user
+
 # Preview Before Upload
 
 https://www.codegrepper.com/code-examples/html/file+upload+preview+in+html
