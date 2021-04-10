@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
 @EnableWebSecurity
@@ -29,15 +30,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-/*        http.authorizeRequests()
-                .antMatchers("/")
-                .hasAnyRole("USER")
-                .and()
-                .formLogin()
-                .failureUrl("/login?error")
-                .defaultSuccessUrl("/index")
-                .loginPage("/login")
-                .permitAll();*/
 
         http.authorizeRequests()
                 .antMatchers("/login", "/register")
@@ -49,7 +41,6 @@ public class AppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/")
                 .loginPage("/login")
                 .failureUrl("/login?error=true");
-
 
     }
 
