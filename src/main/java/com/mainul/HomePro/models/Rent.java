@@ -13,7 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Rent extends AuditModel{
+public class Rent extends AuditModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -29,7 +29,7 @@ public class Rent extends AuditModel{
     private int paidArrears;
 
     @ManyToOne()
-    @JoinColumn(name = "roomid",insertable = false, updatable = false)
+    @JoinColumn(name = "roomid", insertable = false, updatable = false)
     private Room room;
     private Long roomid;
 
