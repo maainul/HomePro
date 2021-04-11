@@ -1,5 +1,6 @@
 package com.mainul.HomePro.springSecurity.entity;
 
+import com.mainul.HomePro.models.Expense;
 import com.mainul.HomePro.models.Home;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +27,6 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //private String username;
     private String firstName;
     private String lastName;
     @Column(unique = true)
@@ -35,8 +35,9 @@ public class UserEntity {
 
 
     @OneToMany(mappedBy = "user")
-    private List<Home> myTodos = new ArrayList<Home>();
+    private List<Home> homeList = new ArrayList<Home>();
 
-
+    @OneToMany(mappedBy = "user")
+    private List<Expense> expenseList = new ArrayList<>();
 
 }

@@ -11,5 +11,9 @@ public interface UserService {
 
     boolean checkIfUserExist(final String email);
 
-    UserEntity findByUsername(String name);
+    UserEntity findByUsername(String email);
+
+    String firstAndLastName(String email);
+
+
 }

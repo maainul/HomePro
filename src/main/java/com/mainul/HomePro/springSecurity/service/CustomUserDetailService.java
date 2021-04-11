@@ -4,6 +4,7 @@ package com.mainul.HomePro.springSecurity.service;
 import com.mainul.HomePro.springSecurity.entity.UserEntity;
 import com.mainul.HomePro.springSecurity.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -27,4 +28,5 @@ public class CustomUserDetailService implements UserDetailsService {
 				.authorities("USER").build();
 		return user;
 	}
+
 }

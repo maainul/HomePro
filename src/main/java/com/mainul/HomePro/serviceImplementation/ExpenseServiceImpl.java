@@ -3,6 +3,7 @@ package com.mainul.HomePro.serviceImplementation;
 import com.mainul.HomePro.models.Expense;
 import com.mainul.HomePro.repository.ExpenseRepository;
 import com.mainul.HomePro.service.ExpenseService;
+import com.mainul.HomePro.springSecurity.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Autowired
     private ExpenseRepository expenseRepository;
 
+/*
     @Override
     public void saveExpense(Expense expense) {
         expenseRepository.save(expense);
@@ -24,6 +26,23 @@ public class ExpenseServiceImpl implements ExpenseService {
     @Override
     public List<Expense> expenseList() {
         return expenseRepository.findAll();
+    }
+*/
+
+    @Override
+    public void saveExpense(Expense expense, UserEntity user) {
+        expense.getId();
+        expense.getDescription();
+        expense.getExpenseTypeid();
+        expense.getExpenseAmount();
+        expense.getExpenseDate();
+        expense.setUser(user);
+        expenseRepository.save(expense);
+    }
+
+    @Override
+    public List<Expense> expenseList(UserEntity user) {
+        return expenseRepository.findAllByUser(user);
     }
 
     @Override

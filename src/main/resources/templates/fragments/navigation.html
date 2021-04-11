@@ -37,12 +37,15 @@
             </div>
             <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Mainul Hasan</h2>
+
+                <h2 th:text="${user}"></h2>
+
+
             </div>
         </div>
         <!-- /menu profile quick info -->
 
-        <br />
+        <br/>
 
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -82,7 +85,7 @@
                         <ul class="nav child_menu">
                             <li><a th:href="@{/expenseList}">All Expense details</a></li>
                             <li><a th:href="@{/addExpense}">Add Expense Details</a></li>
-                            <li><a th:href="@{/addExpenseType}" >Add Expense Type</a></li>
+                            <li><a th:href="@{/addExpenseType}">Add Expense Type</a></li>
                             <li><a th:href="@{/expenseTypes}">Expense Type List</a></li>
 
                         </ul>
@@ -111,7 +114,6 @@
         <!-- /menu footer buttons -->
     </div>
 </div>
-
 
 
 <!-- jQuery -->

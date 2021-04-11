@@ -6,6 +6,7 @@ import com.mainul.HomePro.models.ExpenseType;
 import com.mainul.HomePro.service.ExpenseTypeService;
 import com.mainul.HomePro.service.FloorService;
 import com.mainul.HomePro.service.ExpenseService;
+import com.mainul.HomePro.springSecurity.service.UserService;
 import com.mainul.HomePro.utils.ExpensePDFExporter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -32,6 +34,9 @@ public class ExpenseController {
     @Autowired
     private ExpenseTypeService expenseTypeService;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping("/addExpense")
     public String getExpenseForm(Model model) {
         model.addAttribute("expenseTypes", expenseTypeService.getAllExpenseTypes());
@@ -40,15 +45,17 @@ public class ExpenseController {
     }
 
     @PostMapping("/addExpense")
-    public String saveExpense(@ModelAttribute Expense expense) {
-        expenseService.saveExpense(expense);
+    public String saveExpense(@ModelAttribute Expense expense, Principal principal) {
+        expenseService.saveExpense(expense,userService.findByUsername(principal.getName()));
         return "redirect:/expenseList";
     }
 
     @GetMapping("/expenseList")
-    public String expenseList(Model model) {
-        model.addAttribute("expenseList", expenseService.expenseList());
+    public String expenseList(Model model, Principal principal) {
+        model.addAttribute("expenseList", expenseService.expenseList(userService.findByUsername(principal.getName())));
         model.addAttribute("expenseTypeList", expenseTypeService.getAllExpenseTypes());
+
+
         return "expenseList";
     }
 
@@ -75,7 +82,7 @@ public class ExpenseController {
 
 
     @GetMapping("/expense/export/pdf")
-    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException, ParseException {
+    public void exportToPDF(HttpServletResponse response,Principal principal) throws DocumentException, IOException, ParseException {
         response.setContentType("application/pdf");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateTime = dateFormatter.format(new Date());
@@ -84,7 +91,7 @@ public class ExpenseController {
         String headerValue = "attachment; filename=expenses_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        List<Expense> listExpenses = expenseService.expenseList();
+        List<Expense> listExpenses = expenseService.expenseList(userService.findByUsername(principal.getName()));
 
         ExpensePDFExporter exporter = new ExpensePDFExporter(listExpenses);
         exporter.export(response);
