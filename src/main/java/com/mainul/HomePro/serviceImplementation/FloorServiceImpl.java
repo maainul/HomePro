@@ -3,6 +3,8 @@ package com.mainul.HomePro.serviceImplementation;
 import com.mainul.HomePro.models.Floor;
 import com.mainul.HomePro.repository.FloorRepository;
 import com.mainul.HomePro.service.FloorService;
+import com.mainul.HomePro.springSecurity.entity.UserEntity;
+import com.mainul.HomePro.springSecurity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,14 +17,19 @@ public class FloorServiceImpl implements FloorService {
     @Autowired
     private FloorRepository floorRepository;
 
+    @Autowired private UserService userService;
+
     @Override
-    public void saveFloor(Floor floor) {
+    public void saveFloor(Floor floor, UserEntity user) {
+        floor.getId();
+        floor.getFloorName();
+        floor.setUser(user);
         this.floorRepository.save(floor);
     }
 
     @Override
-    public List<Floor> getAllFloors() {
-        return floorRepository.findAll();
+    public List<Floor> getAllFloors(UserEntity user) {
+        return floorRepository.findByUser(user);
     }
 
     @Override

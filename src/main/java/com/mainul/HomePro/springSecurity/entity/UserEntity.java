@@ -1,7 +1,6 @@
 package com.mainul.HomePro.springSecurity.entity;
 
-import com.mainul.HomePro.models.Expense;
-import com.mainul.HomePro.models.Home;
+import com.mainul.HomePro.models.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -39,5 +38,17 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     private List<Expense> expenseList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<ExpenseType> expenseTypeList = new ArrayList<>();
+
+
+    @OneToMany(mappedBy = "user")
+    private List<Room> roomList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Floor> floorList = new ArrayList<>();
+
+
 
 }

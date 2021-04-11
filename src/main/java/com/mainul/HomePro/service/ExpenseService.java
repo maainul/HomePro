@@ -16,7 +16,7 @@ public interface ExpenseService {
     void deleteExpenseById(Long id);
 
 
-   int countExpense();
+   int countExpense(UserEntity user);
 
 
 

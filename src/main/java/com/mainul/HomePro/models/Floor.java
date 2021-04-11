@@ -1,5 +1,6 @@
 package com.mainul.HomePro.models;
 
+import com.mainul.HomePro.springSecurity.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +11,9 @@ import java.util.List;
 
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 public class Floor extends AuditModel{
 
     @Id
@@ -20,45 +24,8 @@ public class Floor extends AuditModel{
     @OneToMany(mappedBy = "floor")
     private List<Room> rooms;
 
-    public Floor(){
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
-    }
-    public Floor(long id, String floorName, List<Room> rooms) {
-        this.id = id;
-        this.floorName = floorName;
-        this.rooms = rooms;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getFloorName() {
-        return floorName;
-    }
-
-    public void setFloorName(String floorName) {
-        this.floorName = floorName;
-    }
-
-    public List<Room> getRooms() {
-        return rooms;
-    }
-
-    public void setRooms(List<Room> rooms) {
-        this.rooms = rooms;
-    }
-
-    @Override
-    public String toString() {
-        return "Floor{" +
-                "id=" + id +
-                ", floorName='" + floorName + '\'' +
-                ", rooms=" + rooms +
-                '}';
-    }
 }

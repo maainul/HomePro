@@ -2,6 +2,7 @@ package com.mainul.HomePro.controllers;
 
 import com.mainul.HomePro.models.ExpenseType;
 import com.mainul.HomePro.service.ExpenseTypeService;
+import com.mainul.HomePro.springSecurity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -11,9 +12,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.security.Principal;
+
 @Controller
 public class ExpenseTypeController {
 
+    @Autowired private UserService userService;
     @Autowired private ExpenseTypeService expenseTypeService;
 
     @GetMapping("/addExpenseType")
@@ -24,15 +28,15 @@ public class ExpenseTypeController {
     }
 
     @PostMapping("/addExpenseType")
-    public String saveExpanses(@ModelAttribute("expenseType") ExpenseType expenseType) {
-        expenseTypeService.saveExpenseType(expenseType);
+    public String saveExpanses(@ModelAttribute("expenseType") ExpenseType expenseType, Principal principal) {
+        expenseTypeService.saveExpenseType(expenseType, userService.findByUsername(principal.getName()));
         return "redirect:/expenseTypes";
     }
 
 
     @GetMapping("/expenseTypes")
-    public String expenseTypeList(Model model) {
-        model.addAttribute("listExpense", expenseTypeService.getAllExpenseTypes());
+    public String expenseTypeList(Model model, Principal principal) {
+        model.addAttribute("listExpense", expenseTypeService.getAllExpenseTypes(userService.findByUsername(principal.getName())));
         return "/expenseTypeList";
     }
 

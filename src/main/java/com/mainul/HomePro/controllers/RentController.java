@@ -7,6 +7,7 @@ import com.mainul.HomePro.models.Room;
 import com.mainul.HomePro.service.FloorService;
 import com.mainul.HomePro.service.RentService;
 import com.mainul.HomePro.service.RoomService;
+import com.mainul.HomePro.springSecurity.service.UserService;
 import com.mainul.HomePro.utils.ExpensePDFExporter;
 import com.mainul.HomePro.utils.RentMonthWisePDFExporter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.security.Principal;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -33,9 +35,11 @@ public class RentController {
     @Autowired
     private RentService rentService;
 
+    @Autowired
+    private UserService userService;
     @GetMapping("/addRent")
-    public String getRentForm(Model model) {
-        model.addAttribute("rooms", roomService.roomList());
+    public String getRentForm(Model model, Principal principal) {
+        model.addAttribute("rooms", roomService.roomList(userService.findByUsername(principal.getName())));
         model.addAttribute("rent", new Rent());
         return "addRent";
     }
@@ -47,16 +51,16 @@ public class RentController {
     }
 
     @GetMapping("/rentList")
-    public String rentListTable(Model model) {
-        model.addAttribute("roomList", roomService.roomList());
+    public String rentListTable(Model model,Principal principal) {
+        model.addAttribute("roomList", roomService.roomList(userService.findByUsername(principal.getName())));
         model.addAttribute("rentList", rentService.getAllRent());
         return "rentList";
     }
 
 
     @GetMapping("/updateRentInfo/{id}")
-    public String updateRentForm(@PathVariable(value = "id") Long id, Model model) {
-        model.addAttribute("roomList", roomService.roomList());
+    public String updateRentForm(@PathVariable(value = "id") Long id, Model model, Principal principal) {
+        model.addAttribute("roomList", roomService.roomList(userService.findByUsername(principal.getName())));
         model.addAttribute("rent", rentService.getRentById(id));
         return "updateRentInfo";
     }

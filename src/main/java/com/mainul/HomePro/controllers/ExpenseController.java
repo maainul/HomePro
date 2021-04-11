@@ -38,8 +38,8 @@ public class ExpenseController {
     private UserService userService;
 
     @GetMapping("/addExpense")
-    public String getExpenseForm(Model model) {
-        model.addAttribute("expenseTypes", expenseTypeService.getAllExpenseTypes());
+    public String getExpenseForm(Model model, Principal principal) {
+        model.addAttribute("expenseTypes", expenseTypeService.getAllExpenseTypes(userService.findByUsername(principal.getName())));
         model.addAttribute("expense", new Expense());
         return "addExpenseInfo";
     }
@@ -53,15 +53,13 @@ public class ExpenseController {
     @GetMapping("/expenseList")
     public String expenseList(Model model, Principal principal) {
         model.addAttribute("expenseList", expenseService.expenseList(userService.findByUsername(principal.getName())));
-        model.addAttribute("expenseTypeList", expenseTypeService.getAllExpenseTypes());
-
-
+        model.addAttribute("expenseTypeList", expenseTypeService.getAllExpenseTypes(userService.findByUsername(principal.getName())));
         return "expenseList";
     }
 
     @GetMapping("/updateExpenseInfo/{id}")
-    public String updateExpenseForm(@PathVariable(value = "id") Long id, Model model) {
-        model.addAttribute("expenseTypeList", expenseTypeService.getAllExpenseTypes());
+    public String updateExpenseForm(@PathVariable(value = "id") Long id, Model model,Principal principal) {
+        model.addAttribute("expenseTypeList", expenseTypeService.getAllExpenseTypes(userService.findByUsername(principal.getName())));
         model.addAttribute("expense", expenseService.findExpenseById(id));
         return "updateExpenseInfo";
     }

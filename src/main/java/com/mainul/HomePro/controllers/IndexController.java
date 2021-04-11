@@ -30,9 +30,9 @@ private UserService userService;
 
     @GetMapping("/")
     public String index(Model model, Principal principal) {
-        int count = (int) roomService.roomList().stream().count();
+        int count = (int) roomService.roomList(userService.findByUsername(principal.getName())).stream().count();
         model.addAttribute("count", count);
-        model.addAttribute("totalExpense", expenseService.countExpense());
+        model.addAttribute("totalExpense", expenseService.countExpense(userService.findByUsername(principal.getName())));
         model.addAttribute("female", renterService.countFemale());
         model.addAttribute("male", renterService.countMale());
         model.addAttribute("totalRenters", renterService.totalRenter());

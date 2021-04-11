@@ -1,6 +1,7 @@
 package com.mainul.HomePro.models;
 
 
+import com.mainul.HomePro.springSecurity.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,5 +22,8 @@ public class ExpenseType extends AuditModel {
     @OneToMany(mappedBy = "expenseType")
     private List<Expense> expenses;
 
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
 
 }

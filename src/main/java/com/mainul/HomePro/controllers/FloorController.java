@@ -2,6 +2,7 @@ package com.mainul.HomePro.controllers;
 
 import com.mainul.HomePro.models.Floor;
 import com.mainul.HomePro.service.FloorService;
+import com.mainul.HomePro.springSecurity.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.persistence.Entity;
+import java.security.Principal;
 
 @Controller
 public class FloorController {
@@ -18,9 +20,11 @@ public class FloorController {
     @Autowired
     private FloorService floorService;
 
+    @Autowired private UserService userService;
+
     @GetMapping("/floorList")
-    public String viewFloors(Model model){
-       model.addAttribute("listFloors", floorService.getAllFloors());
+    public String viewFloors(Model model, Principal principal){
+       model.addAttribute("listFloors", floorService.getAllFloors(userService.findByUsername(principal.getName())));
        return "allFloorList";
     }
 
@@ -33,8 +37,8 @@ public class FloorController {
     }
 
     @PostMapping("/addFloor")
-    public String saveFloor(@ModelAttribute("floor") Floor floor){
-        floorService.saveFloor(floor);
+    public String saveFloor(@ModelAttribute("floor") Floor floor, Principal principal){
+        floorService.saveFloor(floor, userService.findByUsername(principal.getName()));
         return "redirect:/floorList";
     }
 
