@@ -1,5 +1,6 @@
 package com.mainul.HomePro.models;
 
+import com.mainul.HomePro.springSecurity.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,5 +33,10 @@ public class Rent extends AuditModel {
     @JoinColumn(name = "roomid", insertable = false, updatable = false)
     private Room room;
     private Long roomid;
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
 
 }

@@ -49,6 +49,8 @@ public class UserEntity {
     @OneToMany(mappedBy = "user")
     private List<Floor> floorList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user")
+    private List<Rent> rentList = new ArrayList<>();
 
 
 }

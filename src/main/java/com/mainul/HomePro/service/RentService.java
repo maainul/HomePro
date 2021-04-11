@@ -1,33 +1,33 @@
 package com.mainul.HomePro.service;
 
 import com.mainul.HomePro.models.Rent;
+import com.mainul.HomePro.springSecurity.entity.UserEntity;
 
 import java.util.Date;
 import java.util.List;
 
 public interface RentService {
 
-    public void saveRent(Rent rent);
+    public void saveRent(Rent rent, UserEntity user);
 
-    public List<Rent> getAllRent();
+    public List<Rent> getAllRent(UserEntity user);
 
     void deleteRentById(Long id);
 
-
     public Rent getRentById(Long id);
 
-    int totalRent();
+    int totalRent(UserEntity user);
 
-    int totalElectricityBill();
+    int totalElectricityBill(UserEntity user);
 
-    List<Rent> getAllDataByMonth(Date randomDate);
+    List<Rent> getAllDataByMonth(Date randomDate, UserEntity user);
 
-    int countMonthWiseRentAmount();
+    int countMonthWiseRentAmount(UserEntity user);
 
-    int countCurrentYearRent();
+    int countCurrentYearRent(UserEntity user);
 
-    List<Rent> currentMonthRentList();
+    List<Rent> currentMonthRentList(UserEntity user);
 
-    List<Rent> currentYearRentList();
+    List<Rent> currentYearRentList(UserEntity user);
 
 }

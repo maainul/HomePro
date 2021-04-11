@@ -30,13 +30,12 @@ import java.util.List;
 @Controller
 public class RentController {
 
-    @Autowired
-    private RoomService roomService;
-    @Autowired
-    private RentService rentService;
+    @Autowired private RoomService roomService;
 
-    @Autowired
-    private UserService userService;
+    @Autowired private RentService rentService;
+
+    @Autowired private UserService userService;
+
     @GetMapping("/addRent")
     public String getRentForm(Model model, Principal principal) {
         model.addAttribute("rooms", roomService.roomList(userService.findByUsername(principal.getName())));
@@ -45,15 +44,15 @@ public class RentController {
     }
 
     @PostMapping("/addRent")
-    public String saveRent(@ModelAttribute Rent rent) {
-        rentService.saveRent(rent);
+    public String saveRent(@ModelAttribute Rent rent, Principal principal) {
+        rentService.saveRent(rent, userService.findByUsername(principal.getName()));
         return "redirect:/rentList";
     }
 
     @GetMapping("/rentList")
     public String rentListTable(Model model,Principal principal) {
         model.addAttribute("roomList", roomService.roomList(userService.findByUsername(principal.getName())));
-        model.addAttribute("rentList", rentService.getAllRent());
+        model.addAttribute("rentList", rentService.getAllRent(userService.findByUsername(principal.getName())));
         return "rentList";
     }
 
@@ -67,14 +66,14 @@ public class RentController {
 
 
     @GetMapping("/thisMonthRentDetails")
-    public String thisMonthRentInfo(Model model) {
-        model.addAttribute("thisMonthRentDetails", rentService.currentMonthRentList());
+    public String thisMonthRentInfo(Model model,Principal principal) {
+        model.addAttribute("thisMonthRentDetails", rentService.currentMonthRentList(userService.findByUsername(principal.getName())));
         return "thisMonthRentDetails";
     }
 
     @GetMapping("/thisYearRentList")
-    public String thisYearRentDetails(Model model) {
-        model.addAttribute("thisYearRentDetails", rentService.currentYearRentList());
+    public String thisYearRentDetails(Model model, Principal principal) {
+        model.addAttribute("thisYearRentDetails", rentService.currentYearRentList(userService.findByUsername(principal.getName())));
         return "thisYearRentList";
     }
 
@@ -91,9 +90,8 @@ public class RentController {
         return "rentDetails";
     }
 
-
     @GetMapping("/rent/export/pdf")
-    public void exportToPDF(HttpServletResponse response) throws DocumentException, IOException, ParseException {
+    public void exportToPDF(HttpServletResponse response,Principal principal) throws DocumentException, IOException, ParseException {
         response.setContentType("application/pdf");
         DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
         String currentDateTime = dateFormatter.format(new Date());
@@ -102,7 +100,7 @@ public class RentController {
         String headerValue = "attachment; filename=expenses_" + currentDateTime + ".pdf";
         response.setHeader(headerKey, headerValue);
 
-        List<Rent> listRents = rentService.currentMonthRentList();
+        List<Rent> listRents = rentService.currentMonthRentList(userService.findByUsername(principal.getName()));
 
         RentMonthWisePDFExporter exporter = new RentMonthWisePDFExporter(listRents);
         exporter.export(response);

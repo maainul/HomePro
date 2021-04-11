@@ -24,18 +24,11 @@
 <div class="container body">
     <div class="main_container">
         <div class="col-md-3 left_col">
-
             <div th:replace="fragments/navigation:: navigation"></div>
-
         </div>
-
         <!-- top navigation -->
-
         <div th:replace="fragments/topNavigation :: topNavigation"></div>
-
         <!-- /top navigation -->
-
-
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
@@ -43,7 +36,6 @@
                     <div class="title_left">
                         <h3>Rent Information</h3>
                     </div>
-
                     <div class="title_right">
                         <div class="col-md-5 col-sm-5 form-group pull-right top_search">
                             <div class="input-group">
@@ -79,7 +71,7 @@
                                 <h3>Room Gas Bill = <span th:text="${rent.getGasBill()}"> </span></h3>
                                 <h3>Internet Bill = <span th:text="${rent.getInternetBill()}"> </span></h3>
                                 <h3>Extra Charge = <span th:text="${rent.getExtraCharge()}"> </span></h3>
-                                <h3>Payment Date = <span th:text="${rent.getRentalPaymentDate()}"> </span></h3>
+                                <h3>Payment Date = <span th:text="${rent.getRentMonth()}"> </span></h3>
 
                             </div>
                         </div>

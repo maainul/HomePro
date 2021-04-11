@@ -36,12 +36,12 @@ private UserService userService;
         model.addAttribute("female", renterService.countFemale());
         model.addAttribute("male", renterService.countMale());
         model.addAttribute("totalRenters", renterService.totalRenter());
-        model.addAttribute("electricityBill", rentService.totalElectricityBill());
-        model.addAttribute("totalRent", rentService.totalRent());
-        model.addAttribute("thisMonthRent", rentService.countMonthWiseRentAmount());
-        model.addAttribute("thisYearRent", rentService.countCurrentYearRent());
+        model.addAttribute("electricityBill", rentService.totalElectricityBill(userService.findByUsername(principal.getName())));
+        model.addAttribute("totalRent", rentService.totalRent(userService.findByUsername(principal.getName())));
+        model.addAttribute("thisMonthRent", rentService.countMonthWiseRentAmount(userService.findByUsername(principal.getName())));
+        model.addAttribute("thisYearRent", rentService.countCurrentYearRent(userService.findByUsername(principal.getName())));
         model.addAttribute("user",userService.firstAndLastName(principal.getName()));
         return "index";
-    }
 
+    }
 }
