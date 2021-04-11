@@ -37,7 +37,7 @@
 
         <!-- /top navigation -->
 
-
+<tr th:each="home : ${home}">
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
@@ -60,7 +60,7 @@
                                     <ul class="stats-overview">
                                         <li>
                                             <span class="name"> Estimated Cost </span>
-                                            <span class="value text-success"> 2300 </span>
+                                            <span class="value text-success">  </span>
                                         </li>
                                         <li>
                                             <span class="name"> Total amount</span>
@@ -102,10 +102,16 @@
 
                                             <div class="project_detail">
 
-                                                <p class="title">Client Company</p>
-                                                <p>Deveint Inc</p>
-                                                <p class="title">Project Leader</p>
-                                                <p>Tony Chicken</p>
+                                                <p class="title">
+                                                <span th:text="${home.buyerName}"></span>
+
+                                                </p>
+                                                <p><span th:text="${home.sellerName}"></span></p>
+                                                <p><span th:text="${home.propertyPrice}"></span></p>
+                                                <p><span th:text="${home.propertySize}"></span></p>
+                                                <p><span th:text="${home.propertyLocation}"></span></p>
+                                                <p><span th:text="${home.firstPaymentDate}"></span></p>
+                                                <p><span th:text="${home.finalPaymentDate}"></span></p>
                                             </div>
 
                                             <br/>
@@ -127,7 +133,7 @@
             </div>
         </div>
         <!-- /page content -->
-
+</tr>
         <!-- footer content -->
         <footer>
             <div class="pull-right">

@@ -1,18 +1,11 @@
 package com.mainul.HomePro.springSecurity.service.impl;
 
 
-import java.util.Objects;
-
-import javax.mail.MessagingException;
-
 import com.mainul.HomePro.springSecurity.data.user.UserData;
 import com.mainul.HomePro.springSecurity.entity.UserEntity;
-import com.mainul.HomePro.springSecurity.exception.UnkownIdentifierException;
 import com.mainul.HomePro.springSecurity.exception.UserAlreadyExistException;
 import com.mainul.HomePro.springSecurity.repository.UserRepository;
 import com.mainul.HomePro.springSecurity.service.UserService;
-import org.apache.commons.lang3.BooleanUtils;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -53,6 +46,11 @@ public class DefaultUserService implements UserService {
     @Override
     public boolean checkIfUserExist(String email) {
         return userRepository.findByEmail(email) != null ? true : false;
+    }
+
+    @Override
+    public UserEntity findByUsername(String email) {
+        return userRepository.findByEmail(email);
     }
 
 }
