@@ -4,6 +4,7 @@ import com.mainul.HomePro.models.Rent;
 import com.mainul.HomePro.models.Renter;
 import com.mainul.HomePro.repository.RenterRepository;
 import com.mainul.HomePro.service.RenterService;
+import com.mainul.HomePro.springSecurity.entity.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,14 +18,36 @@ public class RenterServiceImpl implements RenterService {
     private RenterRepository renterRepository;
 
     @Override
-    public Renter saveRenter(Renter renter) {
-        renterRepository.save(renter);
-        return renter;
+    public Renter saveRenter(Renter renter, UserEntity user) {
+        renter.getId();
+        renter.getFirstName();
+        renter.getLastName();
+        renter.getMiddleName();
+        renter.getPhoneNumber1();
+        renter.getPermanentAddress();
+        renter.getEmail();
+        renter.getAdvanceMonth();
+        renter.getDateOfBirth();
+        renter.getDiscount();
+        renter.getFacebook();
+        renter.getGender();
+        renter.getNID();
+        renter.getMaritalStatus();
+        renter.getOccupation();
+        renter.getOfficeJoinDate();
+        renter.getPhoneNumber2();
+        renter.getOfficeName();
+        renter.getOfficePost();
+        renter.getRentalDate();
+        renter.getRenterImage();
+        renter.getRentersImagePath();
+        renter.setUser(user);
+        return renterRepository.save(renter);
     }
 
     @Override
-    public List<Renter> renterList() {
-        List<Renter> renters = renterRepository.findAll();
+    public List<Renter> renterList(UserEntity user) {
+        List<Renter> renters = renterRepository.findByUser(user);
         return renters;
     }
 
@@ -46,8 +69,8 @@ public class RenterServiceImpl implements RenterService {
     }
 
     @Override
-    public int countMale() {
-        List<Renter> renters = renterRepository.findAll();
+    public int countMale(UserEntity user) {
+        List<Renter> renters = renterRepository.findByUser(user);
         int count = 0;
         for (Renter renter : renters) {
             if (renter.getGender().equalsIgnoreCase("MALE")) {
@@ -58,8 +81,8 @@ public class RenterServiceImpl implements RenterService {
     }
 
     @Override
-    public int countFemale() {
-        List<Renter> renters = renterRepository.findAll();
+    public int countFemale(UserEntity user) {
+        List<Renter> renters = renterRepository.findByUser(user);
         int count = 0;
         for (Renter renter : renters) {
             if (renter.getGender().equalsIgnoreCase("FEMALE")) {
@@ -70,8 +93,8 @@ public class RenterServiceImpl implements RenterService {
     }
 
     @Override
-    public int totalRenter() {
-        List<Renter> renters = renterRepository.findAll();
+    public int totalRenter(UserEntity user) {
+        List<Renter> renters = renterRepository.findByUser(user);
         int totalRenters = (int) renters.stream().count();
         return totalRenters;
     }

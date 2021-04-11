@@ -7,19 +7,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Home Pro! |</title>
+    <title>Renter Info! | </title>
 
     <!-- Bootstrap -->
-    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css"
-          rel="stylesheet">
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../vendors/font-awesome/css/font-awesome.min.css"
-          rel="stylesheet">
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- NProgress -->
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type='text/javascript'>
+        function preview_image(event) {
+            var reader = new FileReader();
+            reader.onload = function () {
+                var output = document.getElementById('output_image');
+                output.src = reader.result;
+            }
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+    <style>
+        #output_image {
+            max-width: 200px;
+        }
+    </style>
 </head>
 
 <body class="nav-md">
@@ -41,291 +55,304 @@
         <!-- page content -->
         <div class="right_col" role="main">
             <div class="">
-                <div class="page-title"></div>
-            </div>
-            <div class="clearfix"></div>
+                <div class="page-title">
+                    <div class="title_left">
+                        <h3>Add Renter Information</h3>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
 
-            <div class="row">
-                <div class="col-md-12 col-sm-12">
-                    <div class="x_panel">
-                        <div class="x_title">
-                            <h2>Renter Information</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i
-                                        class="fa fa-chevron-up"></i></a></li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="x_content">
-                            <form class="" th:action="@{/addRenter}" method="post" th:object="${renter}" novalidate>
-                                <span class="section">Renter Information</span>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="x_panel">
+                            <div class="x_title">
+                                <h2>Renter Information</h2>
+                                <ul class="nav navbar-right panel_toolbox">
+                                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                    </li>
+                                    <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                    </li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="x_content">
+                                <form class="" th:action="@{/addRenter}" method="post" th:object="${renter}" novalidate
+                                      enctype="multipart/form-data">
+                                    <input type="hidden" th:field="*{id}">
 
-                                <input type="hidden" th:field="*{id}">
-
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="firstName">First Name <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="firstName" required="required"
-                                               class="form-control" th:field="*{firstName}">
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">First Name<span
+                                                class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="renterName" th:field="*{firstName}"/>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="lastName">Last Name <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="lastName" name="lastName" class="form-control"
-                                               th:field="*{lastName}">
+
+
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Last Name<span
+                                                class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="lastName" th:field="*{lastName}"/>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label for="middleName"
-                                           class="col-form-label col-md-3 col-sm-3 label-align">Middle Name</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input id="middleName" class="form-control col" type="text"
-                                               name="middleName" th:field="*{middleName}">
+
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Middle Name<span
+                                                class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input class="form-control" name="middleName" th:field="*{middleName}"/>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label for="gender"
-                                           class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <select class="form-control" id="ddlGenderAdd" name="gender">
-                                            <option>-SELECT-</option>
-                                            <option th:value="MALE">MALE</option>
-                                            <option th:value="FEMALE">FEMALE</option>
-                                        </select>
+
+                                    <div class="form-group row">
+                                        <label for="gender"
+                                               class="col-form-label col-md-3 col-sm-3 label-align">Gender</label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <select class="form-control" id="ddlGenderAdd" name="gender">
+                                                <option>-SELECT-</option>
+                                                <option th:value="MALE">MALE</option>
+                                                <option th:value="FEMALE">FEMALE</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group row">
+                                    <div class="form-group row">
 
-                                    <label for="maritalStatus" class="col-form-label col-md-3 col-sm-3 label-align">Marital
-                                        Status: </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <select class="form-control" id="ddlMaritalAdd" name="maritalStatus">
-                                            <option>-SELECT-</option>
-                                            <option value="Married">Married</option>
-                                            <option value="Unmarried">Unmarried</option>
-                                        </select>
+                                        <label for="maritalStatus" class="col-form-label col-md-3 col-sm-3 label-align">Marital
+                                            Status: </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <select class="form-control" id="ddlMaritalAdd" name="maritalStatus">
+                                                <option>-SELECT-</option>
+                                                <option value="Married">Married</option>
+                                                <option value="Unmarried">Unmarried</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
 
-
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="NID">NID Number <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="NID" name="NID" class="form-control" th:field="*{NID}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                               for="NID">NID Number <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="NID" name="NID" class="form-control"
+                                                   th:field="*{NID}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Office Join Date<span
-                                            class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <input type="date" class="form-control" name="dateOfBirth"
-                                               th:field="*{dateOfBirth}">
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Office Join
+                                            Date<span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="date" class="form-control" name="dateOfBirth"
+                                                   th:field="*{dateOfBirth}">
+                                        </div>
                                     </div>
-                                </div>
 
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="email">Email <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="email" name="email" class="form-control "
-                                               th:field="*{email}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                               for="email">Email <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="email" name="email" class="form-control "
+                                                   th:field="*{email}">
+                                        </div>
                                     </div>
-                                </div>
 
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="phoneNumber1">Phone Number-1 <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="phoneNumber1" name="phoneNumber1" required="required"
-                                               class="form-control " th:field="*{phoneNumber1}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                               for="phoneNumber1">Phone Number-1 <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="phoneNumber1" name="phoneNumber1" required="required"
+                                                   class="form-control " th:field="*{phoneNumber1}">
+                                        </div>
                                     </div>
-                                </div>
 
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="phoneNumber2">Phone Number-2<span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="phoneNumber2" name="phoneNumber2" class="form-control "
-                                               th:field="*{phoneNumber2}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                               for="phoneNumber2">Phone Number-2<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="phoneNumber2" name="phoneNumber2"
+                                                   class="form-control " th:field="*{phoneNumber2}">
+                                        </div>
                                     </div>
-                                </div>
 
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="facebook">FaceBook <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="facebook" name="facebook" class="form-control"
-                                               th:field="*{facebook}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                               for="facebook">FaceBook <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="facebook" name="facebook" class="form-control"
+                                                   th:field="*{facebook}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="occupation">Occupation <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="occupation" name="occupation"
-                                               required="required" class="form-control " th:field="*{occupation}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                               for="occupation">Occupation <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="occupation" name="occupation"
+                                                   required="required" class="form-control " th:field="*{occupation}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Permanent
-                                        Address<span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <textarea required="required" name='permanentAddress'
-                                                  th:field="*{permanentAddress}"></textarea>
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Permanent
+                                            Address<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <textarea required="required" name='permanentAddress'
+                                                      th:field="*{permanentAddress}"></textarea>
+                                        </div>
                                     </div>
-                                </div>
 
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="officeName">Office Name <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="officeName" class="form-control  "
-                                               th:field="*{officeName}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                               for="officeName">Office Name <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="officeName" class="form-control  "
+                                                   th:field="*{officeName}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Office Join Date<span
-                                            class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <input type="date" class="form-control" name="officeJoinDate"
-                                               th:field="*{officeJoinDate}">
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Office Join
+                                            Date<span
+                                                    class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="date" class="form-control" name="officeJoinDate"
+                                                   th:field="*{officeJoinDate}">
+                                        </div>
                                     </div>
-                                </div>
 
 
-                                <div class="form-group row">
-                                    <label for="post"
-                                           class="col-form-label col-md-3 col-sm-3 label-align">Post</label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input id="post" class="form-control col" type="text" name="post"
-                                               th:field="*{post}">
+                                    <div class="form-group row">
+                                        <label for="post"
+                                               class="col-form-label col-md-3 col-sm-3 label-align">Post</label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input id="post" class="form-control col" type="text" name="officePost"
+                                                   th:field="*{officePost}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align">
-                                        Salary <span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input id="salary" class="form-control" type="text" th:field="*{salary}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align">
+                                            Salary <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input id="salary" class="form-control" type="text" th:field="*{salary}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="discount">Discount<span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="discount" class="form-control" th:field="*{discount}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                               for="discount">Discount<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="discount" class="form-control"
+                                                   th:field="*{discount}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group row">
-                                    <label class="col-form-label col-md-3 col-sm-3 label-align"
-                                           for="advanceMonth">Advance Month<span class="required">*</span>
-                                    </label>
-                                    <div class="col-md-6 col-sm-6 ">
-                                        <input type="text" id="advanceMonth" class="form-control"
-                                               th:field="*{advanceMonth}">
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align"
+                                               for="advanceMonth">Advance Month<span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="text" id="advanceMonth" class="form-control"
+                                                   th:field="*{advanceMonth}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="field item form-group">
-                                    <label class="col-form-label col-md-3 col-sm-3  label-align">Rent Date<span
-                                            class="required">*</span></label>
-                                    <div class="col-md-6 col-sm-6">
-                                        <input type="date" class="form-control" name="rentalDate"
-                                               th:field="*{rentalDate}">
+                                    <div class="field item form-group">
+                                        <label class="col-form-label col-md-3 col-sm-3  label-align">Rent Date<span
+                                                class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6">
+                                            <input type="date" class="form-control" name="rentalDate"
+                                                   th:field="*{rentalDate}">
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <div class="col-md-6 offset-md-3">
-                                        <button type='submit' class="btn btn-primary">Submit</button>
-                                        <button type='reset' class="btn btn-success">Reset</button>
-
+                                    <div class="form-group row">
+                                        <label class="col-form-label col-md-3 col-sm-3 label-align" d>Renter Image<span
+                                                class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <input type="file" name="image" accept="image/png, image/jpeg"
+                                                   onchange="preview_image(event)"/>
+                                        </div>
                                     </div>
-                                </div>
-                                Female
-                            </form>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 col-sm-6 ">
+                                            <img id="output_image"/>
+                                        </div>
+                                    </div>
+                                    <div class="ln_solid">
+                                        <div class="form-group">
+                                            <div class="col-md-6 offset-md-3">
+                                                <button type='submit' class="btn btn-primary">Submit</button>
+                                                <button type='reset' class="btn btn-success">Reset</button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+            <div class="pull-right">
+                Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+            </div>
+            <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
     </div>
-    <!-- /page content -->
-
-    <!-- footer content -->
-    <footer>
-        <div class="pull-right">
-            Gentelella - Bootstrap Admin Template by <a
-                href="https://colorlib.com">Colorlib</a>
-        </div>
-        <div class="clearfix"></div>
-    </footer>
-    <!-- /footer content -->
-</div>
 </div>
 
 
-<script
-        src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="../vendors/validator/multifield.js"></script>
 <script src="../vendors/validator/validator.js"></script>
 
 <script>
-		// initialize a validator instance from the "FormValidator" constructor.
-		// A "<form>" element is optionally passed as an argument, but is not a must
-		var validator = new FormValidator({
-			"events" : [ 'blur', 'input', 'change' ]
-		}, document.forms[0]);
-		// on form "submit" event
-		document.forms[0].onsubmit = function(e) {
-			var submit = true, validatorResult = validator.checkAll(this);
-			console.log(validatorResult);
-			return !!validatorResult.valid;
-		};
-		// on form "reset" event
-		document.forms[0].onreset = function(e) {
-			validator.reset();
-		};
-		// stuff related ONLY for this demo page:
-		$('.toggleValidationTooltips').change(function() {
-			validator.settings.alerts = !this.checked;
-			if (this.checked)
-				$('form .alert').remove();
-		}).prop('checked', false);
-
-
-
+    // initialize a validator instance from the "FormValidator" constructor.
+    // A "<form>" element is optionally passed as an argument, but is not a must
+    var validator = new FormValidator({"events": ['blur', 'input', 'change']}, document.forms[0]);
+    // on form "submit" event
+    document.forms[0].onsubmit = function (e) {
+        var submit = true,
+            validatorResult = validator.checkAll(this);
+        console.log(validatorResult);
+        return !!validatorResult.valid;
+    };
+    // on form "reset" event
+    document.forms[0].onreset = function (e) {
+        validator.reset();
+    };
+    // stuff related ONLY for this demo page:
+    $('.toggleValidationTooltips').change(function () {
+        validator.settings.alerts = !this.checked;
+        if (this.checked)
+            $('form .alert').remove();
+    }).prop('checked', false);
 
 </script>
 

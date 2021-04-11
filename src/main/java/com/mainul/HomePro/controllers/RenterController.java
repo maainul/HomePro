@@ -2,6 +2,7 @@ package com.mainul.HomePro.controllers;
 
 import com.mainul.HomePro.models.Renter;
 import com.mainul.HomePro.service.RenterService;
+import com.mainul.HomePro.springSecurity.service.UserService;
 import org.dom4j.rule.Mode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -24,6 +25,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 
 
 @Controller
@@ -45,6 +47,8 @@ public class RenterController {
     @Autowired
     private RenterService renterService;
 
+    @Autowired private UserService userService;
+
     @GetMapping("/addRenter")
     public String showAddInfoForm(Model model) {
         model.addAttribute("renter", new Renter());
@@ -52,14 +56,14 @@ public class RenterController {
     }
 
     @PostMapping("/addRenter")
-    public String addRenter(@ModelAttribute(name = "renter") Renter renter, Model model, @RequestParam("image") MultipartFile multipartFile) throws IOException {
+    public String addRenter(@ModelAttribute(name = "renter") Renter renter, Principal principal,Model model, @RequestParam("image") MultipartFile multipartFile) throws IOException {
 
         // 1. get original file name
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         //2. set filename to the object
         renter.setRenterImage(fileName);
         //3. create object to find id
-        Renter savedRenter = renterService.saveRenter(renter);
+        Renter savedRenter = renterService.saveRenter(renter, userService.findByUsername(principal.getName()));
         //4. create image upload directory
         String uploadDir = "./renter-images/" + savedRenter.getId();
 
@@ -80,8 +84,8 @@ public class RenterController {
     }
 
     @GetMapping("/renterList")
-    public String showRenterList(Model model) {
-        model.addAttribute("renterList", renterService.renterList());
+    public String showRenterList(Model model,Principal principal) {
+        model.addAttribute("renterList", renterService.renterList(userService.findByUsername(principal.getName())));
         return "renterListTable";
     }
 

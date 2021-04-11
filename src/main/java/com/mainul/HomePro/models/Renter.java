@@ -1,6 +1,7 @@
 
 package com.mainul.HomePro.models;
 
+import com.mainul.HomePro.springSecurity.entity.UserEntity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -46,11 +47,18 @@ public class Renter extends AuditModel{
     @Column(nullable = true, length = 64)
     private String renterImage;
 
+
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    private UserEntity user;
+
     @Transient
     public String getRentersImagePath() {
         if (renterImage == null) return null;
         return "/renter-images/" + id + "/" + renterImage;
     }
+
+
 
 
 }
