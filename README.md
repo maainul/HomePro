@@ -115,3 +115,7 @@ https://www.codejava.net/frameworks/spring-boot/export-data-to-excel-example
 # Video Excel 
 
 https://www.youtube.com/watch?v=BtUdl9pZwR0&ab_channel=CodeJava
+
+
+# Spring Security Login Logout javaDevJournal
+https://www.javadevjournal.com/spring-security/spring-security-logout/
